@@ -10,6 +10,6 @@ Make a Landing Page with Bootstrap
 - [x] Accordion
 - [x] Footer
 
-Gitlab : [Gitlab](https://gitlab.com/zekhoi/synrgy-fsw-chapter-1)
-Github : [Github](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy)
-Preview : [Open](https://zekhoi.gitlab.io/synrgy-fsw-chapter-1)
+- Gitlab : [Gitlab](https://gitlab.com/zekhoi/synrgy-fsw-chapter-1)
+- Github : [Github](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy)
+- Preview : [Open](https://zekhoi.gitlab.io/synrgy-fsw-chapter-1)
