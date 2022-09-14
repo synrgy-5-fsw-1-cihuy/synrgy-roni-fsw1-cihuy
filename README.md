@@ -12,4 +12,5 @@ Make a Landing Page with Bootstrap
 
 - Gitlab : [Gitlab](https://gitlab.com/zekhoi/synrgy-fsw-chapter-1)
 - Github : [Github](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy)
-- Preview : [Open](https://zekhoi.gitlab.io/synrgy-fsw-chapter-1)
+- Preview : [Gitlab Page](https://zekhoi.gitlab.io/synrgy-fsw-chapter-1)
+- Preview : [Github Page](https://synrgy-5-fsw-1-cihuy.github.io/synrgy-roni-fsw1-cihuy/)
