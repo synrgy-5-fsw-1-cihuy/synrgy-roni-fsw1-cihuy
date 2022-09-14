@@ -1,0 +1,51 @@
+$success: #73ca5c;
+$warning: #df9947;
+$danger: #fa2c5a;
+$gray: #f1f3ff;
+
+$dblue-100: #cfd4ed;
+$dblue-200: #aeb7e1;
+$dblue-300: #5e70c4;
+$dblue-400: #0d28a6;
+$dblue-500: #091b6f;
+
+$lgreen-100: #def1df;
+$lgreen-200: #c9e7ca;
+$lgreen-300: #92d094;
+$lgreen-400: #5cb85f;
+$lgreen-500: #3d7b3f;
+
+$neutral-100: #ffffff;
+$neutral-200: #d0d0d0;
+$neutral-300: #8a8a8a;
+$neutral-400: #3c3c3c;
+$neutral-500: #151515;
+
+$btn-border-radius: 2px;
+
+$theme-colors: (
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+  "gray": $gray,
+  "dblue-100": $dblue-100,
+  "dblue-200": $dblue-200,
+  "dblue-300": $dblue-300,
+  "dblue-400": $dblue-400,
+  "dblue-500": $dblue-500,
+
+  "lgreen-100": $lgreen-100,
+  "lgreen-200": $lgreen-200,
+  "lgreen-300": $lgreen-300,
+  "lgreen-400": $lgreen-400,
+  "lgreen-500": $lgreen-500,
+
+  "neutral-100": $neutral-100,
+  "neutral-200": $neutral-200,
+  "neutral-300": $neutral-300,
+  "neutral-400": $neutral-400,
+  "neutral-500": $neutral-500,
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/variables";
