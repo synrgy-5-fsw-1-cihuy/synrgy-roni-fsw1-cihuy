@@ -1,12 +1,18 @@
 const buttonLeft = document.getElementById("slide-left");
 const buttonRight = document.getElementById("slide-right");
+const wrapper = document.getElementById("wrapper-testimonials");
 let cards = document.getElementsByClassName("card-testimonials");
 
 buttonLeft.onclick = () => {
-  document.getElementById("wrapper-testimonials").scrollLeft -=
-    cards[0].clientWidth + 30;
+  wrapper.scrollTo({
+    left: wrapper.scrollLeft - cards[0].clientWidth - 30,
+    behavior: "smooth",
+  });
 };
+
 buttonRight.onclick = () => {
-  document.getElementById("wrapper-testimonials").scrollLeft +=
-    cards[0].clientWidth + 30;
+  wrapper.scrollTo({
+    left: wrapper.scrollLeft + cards[0].clientWidth + 30,
+    behavior: "smooth",
+  });
 };
