@@ -1,7 +1,7 @@
 const buttonLeft = document.getElementById("slide-left");
 const buttonRight = document.getElementById("slide-right");
 const wrapper = document.getElementById("wrapper-testimonials");
-let cards = document.getElementsByClassName("card-testimonials");
+const cards = document.getElementsByClassName("card-testimonials");
 
 buttonLeft.onclick = () => {
   wrapper.scrollTo({
