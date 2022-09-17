@@ -4,8 +4,7 @@
   "description": "Binar Rental Car",
   "main": "index.js",
   "scripts": {
-    "generate": "sass ./assets/css/bootstrap.scss ./assets/css/bootstrap.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gen-css": "sass ./assets/scss/bootstrap.scss ./assets/css/bootstrap.css"
   },
   "author": "Khoironi Kurnia Syah",
   "license": "ISC",
