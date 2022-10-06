@@ -15,31 +15,25 @@ function sortCarByYearAscendingly(cars) {
   // console.log(shortcut);
 
   // Manual
-  const sortWithBubble = (cars) => {
-    const temp = [...cars];
-    // looping sampai berurutan
-    let done = false;
-    while (!done) {
-      done = true;
-      // index dari 1 biar ada previous buat perbandingan (compare previous n current) walaupun juga bisa dari index 0 (compare current n next)
-      for (let i = 1; i < temp.length; i++) {
-        let previous = temp[i - 1];
-        let current = temp[i];
-        // compare previous (i - 1) dan current (i)
-        if (previous.year > current.year) {
-          done = false;
-          // reorder / susun ulang
-          temp[i - 1] = temp[i];
-          temp[i] = previous;
-        }
+  // looping sampai berurutan
+  let done = false;
+  while (!done) {
+    done = true;
+    // index dari 1 biar ada previous buat perbandingan (compare previous n current) walaupun juga bisa dari index 0 (compare current n next)
+    for (let i = 1; i < result.length; i++) {
+      let previous = result[i - 1];
+      let current = result[i];
+      // compare previous (i - 1) dan current (i)
+      if (previous.year > current.year) {
+        done = false;
+        // reorder / susun ulang
+        result[i - 1] = result[i];
+        result[i] = previous;
       }
     }
-    return temp;
-  };
-
-  const manual = sortWithBubble(result);
-  console.log(manual);
+  }
+  console.log(result);
 
   // Rubah code ini dengan array hasil sorting secara ascending
-  return manual;
+  return result;
 }
