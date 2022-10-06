@@ -16,19 +16,25 @@ function sortCarByYearAscendingly(cars) {
 
   // Manual
   const sortWithBubble = (cars) => {
+    const temp = [...cars];
+    // looping sampai berurutan
     let done = false;
     while (!done) {
       done = true;
-      for (let i = 1; i < cars.length; i++) {
-        if (cars[i - 1].year > cars[i].year) {
+      // index dari 1 biar ada previous buat perbandingan (compare previous n current) walaupun juga bisa dari index 0 (compare current n next)
+      for (let i = 1; i < temp.length; i++) {
+        let previous = temp[i - 1];
+        let current = temp[i];
+        // compare previous (i - 1) dan current (i)
+        if (previous.year > current.year) {
           done = false;
-          let temp = cars[i - 1];
-          cars[i - 1] = cars[i];
-          cars[i] = temp;
+          // reorder / susun ulang
+          temp[i - 1] = temp[i];
+          temp[i] = previous;
         }
       }
     }
-    return cars;
+    return temp;
   };
 
   const manual = sortWithBubble(result);

@@ -13,6 +13,7 @@ function filterCarByAvailability(cars) {
 
   // Manual
   for (let car of cars) {
+    // mobil yang tersedia kalo true masukin temp/result array
     if (car.available === true) {
       result.push(car);
     }
