@@ -1,4 +1,4 @@
-# Binar Challenge Chapter 1
+# Binar Challenge Chapter 2
 
 Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 2
 
