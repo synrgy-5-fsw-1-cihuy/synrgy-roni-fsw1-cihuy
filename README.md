@@ -1,8 +1,8 @@
 # Binar Challenge Chapter 1
 
-Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 1
+Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 2
 
-Make a Landing Page with Bootstrap
+Make a Responsive Landing Page with Bootstrap
 
 - [x] Navigation Bar
 - [x] Show Image
