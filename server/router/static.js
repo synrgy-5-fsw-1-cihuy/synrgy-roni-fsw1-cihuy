@@ -23,7 +23,6 @@ module.exports = (req, res) => {
     for (const [key] of Object.entries(fileTypes)) {
       const end = `.${key}`;
       if (req.url.endsWith(end)) {
-        console.log();
         res.setHeader("Content-Type", fileTypes[key]);
         res.end(file);
         return;
