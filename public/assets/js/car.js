@@ -41,12 +41,37 @@ class Car {
 
   render() {
     return `
-      <p>id: <b>${this.id}</b></p>
-      <p>plate: <b>${this.plate}</b></p>
-      <p>manufacture: <b>${this.manufacture}</b></p>
-      <p>model: <b>${this.model}</b></p>
-      <p>available at: <b>${this.availableAt}</b></p>
-      <img src="${this.image}" alt="${this.manufacture}" width="64px">
+      <div class="card shadow-sm border-0 p-2 flex-fill"style="height: 100%;">
+          <div class="p-2 img-container">
+            <img src="${this.image}" alt="${
+      this.manufacture
+    }" class="card-img-top img-center rounded" />
+          </div>
+          <div class="card-body d-flex flex-column mt-3 gy-3">
+            <p>${this.manufacture}/${this.model}</p>
+            <h5><b>${this.rentPerDay.toLocaleString("id", {
+              style: "currency",
+              currency: "IDR",
+            })} / hari</b></h5>
+            <p>${this.description}</p>
+            <p><i class="feather-10" data-feather="circle"></i> ${
+              this.capacity
+            } orang</p>
+            <p><i class="feather-10" data-feather="settings"></i> ${
+              this.transmission
+            }</p>
+            <p><i class="feather-10" data-feather="calendar"></i> Tahun ${
+              this.year
+            }</p>
+            <p>Tersedia: ${new Date(this.availableAt).toLocaleString()}</p>
+            <button
+              type="button"
+              class="btn btn-lgreen-400 fw-bold py-2 px-3 text-white mt-auto mb-0">
+              Pilih Mobil
+            </button>
+          </div>
+        </div>
+      </div>
     `;
   }
 }

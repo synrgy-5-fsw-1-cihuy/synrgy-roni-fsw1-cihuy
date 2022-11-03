@@ -1,6 +1,6 @@
-const fs = require("fs");
+const { getHTML } = require("../helper");
 
-const html = fs.readFileSync("./public/cars.html");
+const html = getHTML("cars.html");
 
 module.exports = {
   path: "/cars",

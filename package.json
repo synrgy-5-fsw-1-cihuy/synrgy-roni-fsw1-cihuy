@@ -4,8 +4,9 @@
   "description": "Binar Rental Car",
   "main": "index.js",
   "scripts": {
-    "gen-css": "sass ./assets/scss/bootstrap.scss ./assets/css/bootstrap.css",
-    "start": "node server/index.js"
+    "gen-css": "sass ./public/assets/scss/bootstrap.scss ./public/assets/css/bootstrap.css",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
   "author": "Khoironi Kurnia Syah",
   "license": "ISC",
@@ -13,6 +14,10 @@
     "autoprefixer": "^10.4.8",
     "bootstrap": "^5.2.1",
     "postcss": "^8.4.16",
-    "postcss-cli": "^10.0.0"
+    "postcss-cli": "^10.0.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
