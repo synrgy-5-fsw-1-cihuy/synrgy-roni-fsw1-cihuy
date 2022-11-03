@@ -9,10 +9,25 @@ class App {
 
   async init() {
     await this.load();
+    const { dateTime, withDriver, passenger } = params;
+    if (!withDriver && !dateTime && !passenger) {
+      this.run;
+      return;
+    }
+    if (typeof withDriver !== "undefined")
+      this.driverTypeElement.value = withDriver;
+    if (typeof dateTime !== "undefined")
+      this.dateElement.value = getHour(dateTime, "date");
+    if (typeof dateTime !== "undefined")
+      this.timeElement.value = getHour(dateTime, "hour");
+    if (typeof passenger !== "undefined")
+      this.passengerElement.value = passenger;
 
-    // Register click listener
-    // this.clearButton.onclick = this.clear;
-    // this.loadButton.onclick = this.run;
+    this.filter(
+      (car) =>
+        getUnix(car.availableAt) < dateTime &&
+        car.capacity >= parseInt(passenger)
+    );
   }
 
   run = () => {
@@ -36,6 +51,20 @@ class App {
     }
   };
 
+  submit = (event) => {
+    event.preventDefault();
+    const driverType = event.target[0].value;
+    const date = event.target[1].value;
+    const time = event.target[2].value;
+    const passenger = event.target[3].value || 0;
+    const dateTime = combineTime(date, time);
+    const current = new URL(window.location.href);
+    current.searchParams.set("withDriver", driverType);
+    current.searchParams.set("dateTime", dateTime);
+    current.searchParams.set("passenger", passenger);
+    window.location.href = current;
+  };
+
   reset = () => {
     this.driverTypeElement.value = "";
     this.dateElement.value = "";
@@ -44,6 +73,7 @@ class App {
   };
 
   filter = async (filterer) => {
+    this.clear();
     const cars = await Binar.listCars(filterer);
     console.log(cars);
     Car.init(cars);
