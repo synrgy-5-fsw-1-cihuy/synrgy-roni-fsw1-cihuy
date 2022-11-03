@@ -1,7 +1,9 @@
 class App {
   constructor() {
-    // this.clearButton = document.getElementById("clear-btn");
-    // this.loadButton = document.getElementById("load-btn");
+    this.driverTypeElement = document.getElementById("driver-type");
+    this.dateElement = document.getElementById("date");
+    this.timeElement = document.getElementById("time");
+    this.passengerElement = document.getElementById("passenger");
     this.carContainerElement = document.getElementById("cars-container");
   }
 
@@ -32,5 +34,18 @@ class App {
       child.remove();
       child = this.carContainerElement.firstElementChild;
     }
+  };
+
+  reset = () => {
+    this.driverTypeElement.value = "";
+    this.dateElement.value = "";
+    this.timeElement.value = "";
+    this.passengerElement.value = "";
+  };
+
+  filter = async (filterer) => {
+    const cars = await Binar.listCars(filterer);
+    console.log(cars);
+    Car.init(cars);
   };
 }
