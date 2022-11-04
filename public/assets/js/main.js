@@ -18,7 +18,7 @@ const combineTime = (date, time) => {
 
 const getUnix = (unix) => new Date(unix).getTime() / 1000;
 
-const getHour = (unix, type) => {
+const getTime = (unix, type) => {
   const time = new Date(unix * 1000);
   switch (type) {
     case "hour":
@@ -34,6 +34,13 @@ const getHour = (unix, type) => {
   }
 };
 
+/*
+ * Contoh penggunaan DOM di dalam class
+ * */
+const app = new App();
+
+app.init();
+
 const searchForm = document.getElementById("search");
 const clearButton = document.getElementById("clear");
 
@@ -44,10 +51,3 @@ searchForm.addEventListener("submit", (event) => {
 clearButton.addEventListener("click", () => {
   app.reset();
 });
-
-/*
- * Contoh penggunaan DOM di dalam class
- * */
-const app = new App();
-
-app.init().then(app.run);

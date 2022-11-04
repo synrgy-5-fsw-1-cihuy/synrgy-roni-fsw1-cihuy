@@ -30,7 +30,7 @@ class Binar {
       cars = this.populateCars(cacheCars);
     } else {
       const response = await fetch(
-        "https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json"
+        "https://raw.githubusercontent.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/challenge-4/data/cars.min.json"
       );
       const body = await response.json();
       cars = this.populateCars(body);
