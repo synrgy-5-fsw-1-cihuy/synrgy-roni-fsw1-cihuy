@@ -22,7 +22,7 @@ class App {
 
     this.filter(
       (car) =>
-        getUnix(car.availableAt) < dateTime &&
+        getUnix(car.availableAt) > dateTime &&
         car.capacity >= parseInt(passenger)
     );
   }
@@ -82,7 +82,7 @@ class App {
 
     this.filter(
       (car) =>
-        getUnix(car.availableAt) < dateTime &&
+        getUnix(car.availableAt) > dateTime &&
         car.capacity >= parseInt(passenger)
     );
   };
