@@ -8,8 +8,9 @@ class App {
   }
 
   async init() {
+    await this.load();
     const { dateTime, withDriver, passenger } = params;
-    if (!withDriver && !dateTime && !passenger) return await this.load();
+    if (!withDriver && !dateTime && !passenger) return this.run();
     if (typeof withDriver !== "undefined")
       this.driverTypeElement.value = withDriver;
     if (typeof dateTime !== "undefined")
