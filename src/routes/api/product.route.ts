@@ -1,6 +1,6 @@
-const express = require("express");
-const auth = require("../../middlewares/auth.middleware");
-const ProductController = require("../../controllers/product.controller");
+import express from "express";
+import auth from "@middlewares/auth.middleware";
+import ProductController from "@controllers/product.controller";
 
 const ProductRouter = express.Router();
 // const PATH = "/products";
@@ -25,4 +25,4 @@ ProductRouter.post("/", ProductController.create);
 ProductRouter.put("/:id", ProductController.update);
 ProductRouter.delete("/:id", ProductController.delete);
 
-module.exports = ProductRouter;
+export default ProductRouter;

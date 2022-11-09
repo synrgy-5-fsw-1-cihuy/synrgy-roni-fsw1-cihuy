@@ -1,5 +1,9 @@
-const auth = (req, res, next) => {
-  const role = req.headers.mrole?.toLowerCase();
+import { Request, Response, NextFunction } from "express";
+
+const auth = (req: Request, res: Response, next: NextFunction) => {
+  const role = req.headers.mrole
+    ? req.headers.mrole
+    : req.headers.mrole?.toLowerCase();
   const auth = req.headers.authorization;
 
   console.log(role);
@@ -26,4 +30,4 @@ const auth = (req, res, next) => {
   return;
 };
 
-module.exports = auth;
+export default auth;
