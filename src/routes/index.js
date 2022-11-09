@@ -1,10 +1,10 @@
 const express = require("express");
-const ProductRouter = require("./product.route");
-const HomeRouter = require("./home.route");
+const webRouter = require("./web");
+const APIRouter = require("./api");
 
 const router = express.Router();
 
-router.use("/", HomeRouter);
-router.use("/api/products", ProductRouter);
+router.use(webRouter);
+router.use("/api", APIRouter);
 
 module.exports = router;
