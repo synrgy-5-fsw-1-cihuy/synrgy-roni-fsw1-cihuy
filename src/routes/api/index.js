@@ -3,6 +3,6 @@ const ProductRouter = require("./product.route");
 
 const APIRouter = express.Router();
 
-APIRouter.use(ProductRouter);
+APIRouter.use("/products", ProductRouter);
 
 module.exports = APIRouter;

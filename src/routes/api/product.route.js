@@ -13,10 +13,16 @@ ProductRouter.use(auth);
 // ProductRouter.put(`${PATH}/:id`, ProductController.update);
 // ProductRouter.delete(`${PATH}/:id`, ProductController.delete);
 
-ProductRouter.get(`"/products/"`, ProductController.findAll);
-ProductRouter.get("/products/:id", ProductController.find);
-ProductRouter.post("/products/", ProductController.create);
-ProductRouter.put("/products/:id", ProductController.update);
-ProductRouter.delete("/products/:id", ProductController.delete);
+// ProductRouter.get("/products/", ProductController.findAll);
+// ProductRouter.get("/products/:id", ProductController.find);
+// ProductRouter.post("/products/", ProductController.create);
+// ProductRouter.put("/products/:id", ProductController.update);
+// ProductRouter.delete("/products/:id", ProductController.delete);
+
+ProductRouter.get("/", ProductController.findAll);
+ProductRouter.get("/:id", ProductController.find);
+ProductRouter.post("/", ProductController.create);
+ProductRouter.put("/:id", ProductController.update);
+ProductRouter.delete("/:id", ProductController.delete);
 
 module.exports = ProductRouter;
