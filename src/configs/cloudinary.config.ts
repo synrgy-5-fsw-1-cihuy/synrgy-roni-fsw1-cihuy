@@ -1,9 +1,10 @@
 import { v2 as cloudinary } from "cloudinary";
+import env from "@constants/env";
 
 cloudinary.config({
-  cloud_name: "zekhoi",
-  api_key: "289755664724987",
-  api_secret: "evuo-CKELEE-MJeuxEX2a3kqoLA",
+  cloud_name: env.CLOUDINARY_CLOUD_NAME,
+  api_key: env.CLOUDINARY_API_KEY,
+  api_secret: env.CLOUDINARY_API_SECRET,
 });
 
 export default cloudinary;
