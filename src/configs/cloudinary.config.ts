@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
+
 import env from "@constants/env";
 
 cloudinary.config({

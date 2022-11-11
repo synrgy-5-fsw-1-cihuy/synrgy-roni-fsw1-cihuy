@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 
 const auth = (req: Request, res: Response, next: NextFunction) => {
   const role = req.headers.mrole
@@ -6,10 +6,6 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     : req.headers.mrole?.toLowerCase();
   const auth = req.headers.authorization;
 
-  console.log(role);
-
-  console.log(req.path);
-  console.log("");
   // if (!role) {
   //   res.status(401).json({ message: "Unauthorized" });
   //   return;

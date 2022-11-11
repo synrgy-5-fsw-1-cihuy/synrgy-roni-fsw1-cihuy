@@ -6,20 +6,18 @@
     "rootDirs": ["src", "dist"],
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "outDir": "./dist",
     "strict": true,
     "paths": {
-      "@/*": ["./*"],
-      "@configs/*": ["configs/*"],
-      "@constants/*": ["constants/*"],
-      "@controllers/*": ["controllers/*"],
-      "@database/*": ["database/*"],
-      "@middlewares/*": ["middlewares/*"],
-      "@models/*": ["models/*"],
-      "@routes/*": ["routes/*"],
-      "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
+      "@/*": ["./src/*"],
+      "@configs/*": ["./src/configs/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@controllers/*": ["./src/controllers/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@models/*": ["./src/models/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@utils/*": ["./src/utils/*"]
     },
     "incremental": true,
     "plugins": [
@@ -28,7 +26,7 @@
     ]
   },
   "include": ["./**/*"],
-  "exclude": ["node_modules", "dist"],
+  "exclude": ["node_modules", "dist", "jest.config.ts"],
   "ts-node": {
     "transpileOnly": true,
     "require": ["typescript-transform-paths/register"]

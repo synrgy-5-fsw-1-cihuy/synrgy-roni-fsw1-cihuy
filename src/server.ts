@@ -1,18 +1,23 @@
 import app from "@/app";
+
 import database from "@configs/db.config";
+
+import logger from "@utils/logger";
 
 const PORT = process.env.PORT || 3000;
 
 const start = async () => {
   try {
     await database.authenticate();
-    console.log("Database connection has been established successfully.");
+    logger.info(
+      "⚡️[database]: Database connection has been established successfully."
+    );
 
     app.listen(PORT, () => {
-      console.log(`Server listening on port http://localhost:${PORT}`);
+      logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     process.exit(1);
   }
 };

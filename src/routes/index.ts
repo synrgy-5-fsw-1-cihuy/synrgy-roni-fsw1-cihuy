@@ -1,6 +1,7 @@
 import express from "express";
-import webRouter from "@routes/web";
+
 import APIRouter from "@routes/api";
+import webRouter from "@routes/web";
 
 const router = express.Router();
 
