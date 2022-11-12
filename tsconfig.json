@@ -27,8 +27,8 @@
       { "transform": "typescript-transform-paths", "afterDeclarations": true }
     ]
   },
-  "include": ["./**/*"],
-  "exclude": ["node_modules", "dist", "__tests__", "jest.config.ts"],
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist", "jest.config.ts"],
   "ts-node": {
     "transpileOnly": true,
     "require": ["typescript-transform-paths/register"]
