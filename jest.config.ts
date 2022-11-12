@@ -11,6 +11,7 @@ const jestConfig: JestConfigWithTsJest = {
     "^@configs/(.*)": "<rootDir>/src/configs/$1",
     "^@constants/(.*)": "<rootDir>/src/constants/$1",
     "^@controllers/(.*)": "<rootDir>/src/controllers/$1",
+    "^@database/(.*)": "<rootDir>/src/database/$1",
     "^@middlewares/(.*)": "<rootDir>/src/middlewares/$1",
     "^@models/(.*)": "<rootDir>/src/models/$1",
     "^@routes/(.*)": "<rootDir>/src/routes/$1",

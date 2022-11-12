@@ -1,23 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
+    "allowJs": true,
     "module": "commonjs",
     "lib": ["es6"],
     "rootDirs": ["src", "dist"],
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "outDir": "./dist",
     "strict": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@configs/*": ["./src/configs/*"],
-      "@constants/*": ["./src/constants/*"],
-      "@controllers/*": ["./src/controllers/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@models/*": ["./src/models/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@/*": ["./*"],
+      "@configs/*": ["./configs/*"],
+      "@constants/*": ["./constants/*"],
+      "@controllers/*": ["./controllers/*"],
+      "@database/*": ["./database/*"],
+      "@middlewares/*": ["./middlewares/*"],
+      "@models/*": ["./models/*"],
+      "@routes/*": ["./routes/*"],
+      "@utils/*": ["./utils/*"]
     },
     "incremental": true,
     "plugins": [
@@ -26,7 +28,7 @@
     ]
   },
   "include": ["./**/*"],
-  "exclude": ["node_modules", "dist", "jest.config.ts"],
+  "exclude": ["node_modules", "dist", "__tests__", "jest.config.ts"],
   "ts-node": {
     "transpileOnly": true,
     "require": ["typescript-transform-paths/register"]

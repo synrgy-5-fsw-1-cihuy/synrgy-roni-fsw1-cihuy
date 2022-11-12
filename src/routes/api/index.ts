@@ -1,12 +1,9 @@
 import express from "express";
 
-import ProductRouter from "@/routes/api/product.route";
-
-import UploadRouter from "./upload.route";
+import CarRouter from "@/routes/api/car.route";
 
 const APIRouter = express.Router();
 
-APIRouter.use("/products", ProductRouter);
-APIRouter.use("/upload", UploadRouter);
+APIRouter.use("/cars", CarRouter);
 
 export default APIRouter;

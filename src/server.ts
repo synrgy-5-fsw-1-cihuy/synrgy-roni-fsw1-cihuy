@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 const start = async () => {
   try {
-    await database.authenticate();
+    await database.sync();
     logger.info(
       "⚡️[database]: Database connection has been established successfully."
     );

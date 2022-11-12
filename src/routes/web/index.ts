@@ -1,9 +1,9 @@
-import express from "express";
-
-import HomeRouter from "@/routes/web/home.route";
+import express, { Request, Response } from "express";
 
 const router = express.Router();
 
-router.use(HomeRouter);
+router.get("/", (req: Request, res: Response) => {
+  res.send("Hello Home!");
+});
 
 export default router;
