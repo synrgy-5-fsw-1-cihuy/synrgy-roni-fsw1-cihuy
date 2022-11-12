@@ -28,6 +28,7 @@ class CarController implements CarControllerInterface {
       const { id } = req.params;
       if (!id) {
         res.status(400).json({ message: "Bad request" });
+        return;
       }
 
       const result = await Car.findByPk(req.params.id);
@@ -48,7 +49,7 @@ class CarController implements CarControllerInterface {
       const { name, cost, capacity, image } = req.body;
       if (!name || !cost || !capacity || !image) {
         res.status(400).json({
-          message: "Invalid request",
+          message: "Bad request",
         });
         return;
       }
