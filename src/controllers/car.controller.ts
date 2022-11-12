@@ -4,16 +4,16 @@ import Car from "@models/car";
 
 import logger from "@utils/logger";
 
-interface CarController {
-  findAll(req: Request, res: Response): void;
-  find(req: Request, res: Response): void;
-  create(req: Request, res: Response): void;
-  update(req: Request, res: Response): void;
-  delete(req: Request, res: Response): void;
+interface CarControllerInterface {
+  findAll: (req: Request, res: Response) => void;
+  find: (req: Request, res: Response) => void;
+  create: (req: Request, res: Response) => void;
+  update: (req: Request, res: Response) => void;
+  delete: (req: Request, res: Response) => void;
 }
 
-class CarController {
-  public index = async (req: Request, res: Response) => {
+class CarController implements CarControllerInterface {
+  public findAll = async (req: Request, res: Response) => {
     try {
       const result = await Car.findAll();
       res.json({ message: "OK", data: result });
@@ -23,7 +23,7 @@ class CarController {
     }
   };
 
-  public show = async (req: Request, res: Response) => {
+  public find = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       if (!id) {
@@ -43,7 +43,7 @@ class CarController {
     }
   };
 
-  public save = async (req: Request, res: Response) => {
+  public create = async (req: Request, res: Response) => {
     try {
       const { name, cost, capacity, image } = req.body;
       if (!name || !cost || !capacity || !image) {
@@ -61,7 +61,7 @@ class CarController {
     }
   };
 
-  public patch = async (req: Request, res: Response) => {
+  public update = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       const { name, cost, capacity, image } = req.body;
@@ -88,7 +88,7 @@ class CarController {
     }
   };
 
-  public remove = async (req: Request, res: Response) => {
+  public delete = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       if (!id) {

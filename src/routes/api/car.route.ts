@@ -4,10 +4,10 @@ import CarController from "@controllers/car.controller";
 
 const CarRouter = express.Router();
 
-CarRouter.get("/", CarController.index);
-CarRouter.get("/:id", CarController.show);
-CarRouter.post("/", CarController.save);
-CarRouter.put("/:id", CarController.patch);
-CarRouter.delete("/:id", CarController.remove);
+CarRouter.get("/", CarController.findAll);
+CarRouter.get("/:id", CarController.find);
+CarRouter.post("/", CarController.create);
+CarRouter.put("/:id", CarController.update);
+CarRouter.delete("/:id", CarController.delete);
 
 export default CarRouter;
