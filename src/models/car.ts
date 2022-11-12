@@ -5,6 +5,9 @@ import sequelize from "@configs/db.config";
 interface CarAttributes {
   id: number;
   name: string;
+  cost: number;
+  capacity: number;
+  image: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -12,6 +15,9 @@ interface CarAttributes {
 class Car extends Model<CarAttributes> implements CarAttributes {
   declare id: number;
   declare name: string;
+  declare cost: number;
+  declare capacity: number;
+  declare image: string;
   declare readonly createdAt: Date;
   declare readonly updatedAt: Date;
 }
@@ -24,7 +30,19 @@ Car.init(
       primaryKey: true,
     },
     name: {
-      type: new DataTypes.STRING(128),
+      type: DataTypes.STRING(128),
+      allowNull: false,
+    },
+    cost: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    capacity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING(128),
       allowNull: false,
     },
     createdAt: DataTypes.DATE,

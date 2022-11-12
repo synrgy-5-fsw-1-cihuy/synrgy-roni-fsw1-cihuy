@@ -16,7 +16,7 @@ class CarController {
   public index = async (req: Request, res: Response) => {
     try {
       const result = await Car.findAll();
-      res.json({ message: "Get all car", data: result });
+      res.json({ message: "OK", data: result });
     } catch (error) {
       logger.error(error);
       res.status(500).json({ message: "Internal server error" });
@@ -25,12 +25,18 @@ class CarController {
 
   public show = async (req: Request, res: Response) => {
     try {
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({ message: "Bad request" });
+      }
+
       const result = await Car.findByPk(req.params.id);
       if (!result) {
-        res.status(404).json({ message: "Car not found", data: result });
+        res.status(404).json({ message: "Car not found" });
         return;
       }
-      res.json({ message: "Get a car", data: result });
+
+      res.json({ message: "OK", data: result });
     } catch (error) {
       logger.error(error);
       res.status(500).json({ message: "Internal server error" });
@@ -39,8 +45,16 @@ class CarController {
 
   public save = async (req: Request, res: Response) => {
     try {
+      const { name, cost, capacity, image } = req.body;
+      if (!name || !cost || !capacity || !image) {
+        res.status(400).json({
+          message: "Invalid request",
+        });
+        return;
+      }
+
       const result = await Car.create(req.body);
-      res.json({ message: "Create a car", data: result });
+      res.status(201).json({ message: "Created", data: result });
     } catch (error) {
       logger.error(error);
       res.status(500).json({ message: "Internal server error" });
@@ -49,11 +63,24 @@ class CarController {
 
   public patch = async (req: Request, res: Response) => {
     try {
-      const carId = req.params.id;
-      const result = await Car.update(req.body, { where: { id: carId } });
+      const { id } = req.params;
+      const { name, cost, capacity, image } = req.body;
+
+      if (!id || (!name && !cost && !capacity && !image)) {
+        res.status(400).json({ message: "Bad request" });
+        return;
+      }
+
+      const car = await Car.findByPk(id);
+      if (!car) {
+        res.status(404).json({ message: "Car not found" });
+        return;
+      }
+
+      await Car.update(req.body, { where: { id } });
+
       res.json({
-        message: `Update a car with id: ${carId}`,
-        data: result,
+        message: `Car with id: ${id} has been updated.`,
       });
     } catch (error) {
       logger.error(error);
@@ -63,11 +90,20 @@ class CarController {
 
   public remove = async (req: Request, res: Response) => {
     try {
-      const carId = req.params.id;
-      const result = await Car.destroy({ where: { id: carId } });
+      const { id } = req.params;
+      if (!id) {
+        res.status(400).json({ message: "Bad request" });
+        return;
+      }
+
+      const result = await Car.destroy({ where: { id } });
+      if (!result) {
+        res.status(404).json({ message: "Car not found" });
+        return;
+      }
+
       res.json({
-        message: `Delete a car with id: ${carId}`,
-        data: result,
+        message: `Car with id: ${id} has been deleted`,
       });
     } catch (error) {
       logger.error(error);

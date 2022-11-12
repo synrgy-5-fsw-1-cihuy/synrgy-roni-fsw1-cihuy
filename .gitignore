@@ -3,6 +3,8 @@
 
 ### fly.io ###
 fly.toml
+Dockerfile
+.dockerignore
 
 
 ### Node ###

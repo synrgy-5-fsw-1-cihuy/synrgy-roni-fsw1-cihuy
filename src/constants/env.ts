@@ -3,6 +3,9 @@ import { Options } from "sequelize";
 
 dotenv.config();
 
+const NODE_ENV = process.env.NODE_ENV;
+const PORT = process.env.PORT;
+
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
@@ -14,6 +17,8 @@ const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
 const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;
 
 export default {
+  NODE_ENV,
+  PORT,
   DB_HOST,
   DB_USER,
   DB_PASSWORD,

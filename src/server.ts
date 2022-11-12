@@ -2,9 +2,11 @@ import app from "@/app";
 
 import database from "@configs/db.config";
 
+import env from "@constants/env";
+
 import logger from "@utils/logger";
 
-const PORT = process.env.PORT || 3000;
+const PORT = env.PORT || 8080;
 
 const start = async () => {
   try {
