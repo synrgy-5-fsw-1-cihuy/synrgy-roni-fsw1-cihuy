@@ -16,7 +16,6 @@ class CarController {
   public index = async (req: Request, res: Response) => {
     try {
       const result = await Car.findAll();
-
       res.json({ message: "Get all car", data: result });
     } catch (error) {
       logger.error(error);
@@ -27,6 +26,10 @@ class CarController {
   public show = async (req: Request, res: Response) => {
     try {
       const result = await Car.findByPk(req.params.id);
+      if (!result) {
+        res.status(404).json({ message: "Car not found", data: result });
+        return;
+      }
       res.json({ message: "Get a car", data: result });
     } catch (error) {
       logger.error(error);
