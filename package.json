@@ -2,7 +2,7 @@
   "name": "challenge-05",
   "version": "1.0.0",
   "description": "Binar Rental Car",
-  "main": "src/server.js",
+  "main": "dist/server.js",
   "scripts": {
     "build": "rm -rf dist/ && ttsc",
     "start": "node dist/server",
@@ -13,8 +13,7 @@
     "test:watch": "jest --watch",
     "test": "jest",
     "format": "prettier -w .",
-    "format:check": "prettier -c .",
-    "prebuild": "yarn typecheck && yarn lint:fix"
+    "format:check": "prettier -c ."
   },
   "author": "Khoironi Kurnia Syah",
   "license": "ISC",
