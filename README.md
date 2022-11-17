@@ -21,7 +21,7 @@ Response
       "id": 10,
       "name": "bmw",
       "cost": 3000,
-      "capacity": 2,
+      "capacity": "small",
       "image": "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg",
       "createdAt": "2022-11-12T11:13:31.984Z",
       "updatedAt": "2022-11-12T11:13:31.984Z"
@@ -41,7 +41,7 @@ Response
     "id": 10,
     "name": "bmw",
     "cost": 3000,
-    "capacity": 2,
+    "capacity": "small",
     "image": "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg",
     "createdAt": "2022-11-12T11:13:31.984Z",
     "updatedAt": "2022-11-12T11:13:31.984Z"
@@ -57,8 +57,8 @@ Request
 {
   "name": "bmw",
   "cost": 3000,
-  "capacity": 2,
-  "image": "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg"
+  "capacity": "small",
+  "image": "ini dalam form gatau nulis di sininya"
 }
 ```
 
@@ -71,7 +71,7 @@ Response
     "id": 18,
     "name": "bmw",
     "cost": 3000,
-    "capacity": 2,
+    "capacity": "small",
     "image": "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg",
     "updatedAt": "2022-11-12T11:26:11.794Z",
     "createdAt": "2022-11-12T11:26:11.794Z"

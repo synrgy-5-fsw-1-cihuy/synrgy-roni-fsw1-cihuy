@@ -2,21 +2,26 @@ import { DataTypes, Model } from "sequelize";
 
 import sequelize from "@configs/db.config";
 
-interface CarAttributes {
+export interface CarAttributes {
   id: number;
   name: string;
   cost: number;
-  capacity: number;
+  capacity: Capacity;
   image: string;
   createdAt: Date;
   updatedAt: Date;
+}
+export enum Capacity {
+  "small",
+  "medium",
+  "large",
 }
 
 class Car extends Model<CarAttributes> implements CarAttributes {
   declare id: number;
   declare name: string;
   declare cost: number;
-  declare capacity: number;
+  declare capacity: Capacity;
   declare image: string;
   declare readonly createdAt: Date;
   declare readonly updatedAt: Date;
@@ -38,7 +43,7 @@ Car.init(
       allowNull: false,
     },
     capacity: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.ENUM("small", "medium", "large"),
       allowNull: false,
     },
     image: {

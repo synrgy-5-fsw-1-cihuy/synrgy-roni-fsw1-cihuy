@@ -1,13 +1,16 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
+import formidable from "formidable";
 
-import Car from "@models/car";
+import saveImage from "@/utils/cloudinary";
+
+import Car, { Capacity, CarAttributes } from "@models/car";
 
 import logger from "@utils/logger";
 
 interface CarControllerInterface {
   findAll: (req: Request, res: Response) => void;
   find: (req: Request, res: Response) => void;
-  create: (req: Request, res: Response) => void;
+  create: (req: Request, res: Response, next: NextFunction) => void;
   update: (req: Request, res: Response) => void;
   delete: (req: Request, res: Response) => void;
 }
@@ -44,18 +47,38 @@ class CarController implements CarControllerInterface {
     }
   };
 
-  public create = async (req: Request, res: Response) => {
+  public create = async (req: Request, res: Response, next: NextFunction) => {
+    const form = formidable({ multiples: false });
     try {
-      const { name, cost, capacity, image } = req.body;
-      if (!name || !cost || !capacity || !image) {
-        res.status(400).json({
-          message: "Bad request",
-        });
-        return;
-      }
+      form.parse(req, async (err, fields, files) => {
+        // console.log(files);
+        if (err) {
+          next(err);
+          return;
+        }
 
-      const result = await Car.create(req.body);
-      res.status(201).json({ message: "Created", data: result });
+        const { name, cost, capacity } = fields;
+        const { image } = files;
+
+        if (!name || !cost || !capacity || !image) {
+          res.status(400).json({
+            message: "Bad request",
+          });
+          return;
+        }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore  incorrect type from formidable
+        const imageUrl = await saveImage(files.image.filepath);
+
+        const result = await Car.create({
+          name: fields.name as string,
+          cost: Number(fields.cost),
+          capacity: fields.capacity as unknown as Capacity,
+          image: imageUrl as string,
+        } as CarAttributes);
+
+        res.status(201).json({ message: "Created", data: result });
+      });
     } catch (error) {
       logger.error(error);
       res.status(500).json({ message: "Internal server error" });
