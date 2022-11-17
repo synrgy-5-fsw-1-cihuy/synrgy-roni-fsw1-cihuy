@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import formidable from "formidable";
 
 import saveImage from "@/utils/cloudinary";
@@ -10,8 +10,8 @@ import logger from "@utils/logger";
 interface CarControllerInterface {
   findAll: (req: Request, res: Response) => void;
   find: (req: Request, res: Response) => void;
-  create: (req: Request, res: Response, next: NextFunction) => void;
-  update: (req: Request, res: Response, next: NextFunction) => void;
+  create: (req: Request, res: Response) => void;
+  update: (req: Request, res: Response) => void;
   delete: (req: Request, res: Response) => void;
 }
 
@@ -49,19 +49,13 @@ class CarController implements CarControllerInterface {
     }
   };
 
-  public create = async (req: Request, res: Response, next: NextFunction) => {
+  public create = async (req: Request, res: Response) => {
     try {
       form.parse(req, async (err, fields, files) => {
-        // console.log(files);
-        if (err) {
-          next(err);
-          return;
-        }
-
         const { name, cost, capacity } = fields;
         const { image } = files;
 
-        if (!name || !cost || !capacity || !image) {
+        if (err && (!name || !cost || !capacity || !image)) {
           res.status(400).json({
             message: "Bad request",
           });
@@ -86,20 +80,16 @@ class CarController implements CarControllerInterface {
     }
   };
 
-  public update = async (req: Request, res: Response, next: NextFunction) => {
+  public update = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       form.parse(req, async (err, fields, files) => {
         // console.log(files);
-        if (err) {
-          next(err);
-          return;
-        }
 
         const { name, cost, capacity } = fields;
         const { image } = files;
 
-        if (!name && !cost && !capacity && !image) {
+        if (err || (!name && !cost && !capacity && !image)) {
           res.status(400).json({ message: "Bad request" });
           return;
         }
