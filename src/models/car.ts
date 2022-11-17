@@ -2,22 +2,13 @@ import { DataTypes, Model } from "sequelize";
 
 import sequelize from "@configs/db.config";
 
-export interface CarAttributes {
-  id: number;
-  name: string;
-  cost: number;
-  capacity: Capacity;
-  image: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-export enum Capacity {
+enum Capacity {
   "small",
   "medium",
   "large",
 }
 
-class Car extends Model<CarAttributes> implements CarAttributes {
+class Car extends Model {
   declare id: number;
   declare name: string;
   declare cost: number;

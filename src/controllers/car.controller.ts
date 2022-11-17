@@ -3,7 +3,7 @@ import formidable from "formidable";
 
 import saveImage from "@/utils/cloudinary";
 
-import Car, { Capacity, CarAttributes } from "@models/car";
+import Car from "@models/car";
 
 import logger from "@utils/logger";
 
@@ -11,9 +11,11 @@ interface CarControllerInterface {
   findAll: (req: Request, res: Response) => void;
   find: (req: Request, res: Response) => void;
   create: (req: Request, res: Response, next: NextFunction) => void;
-  update: (req: Request, res: Response) => void;
+  update: (req: Request, res: Response, next: NextFunction) => void;
   delete: (req: Request, res: Response) => void;
 }
+
+const form = formidable({ multiples: false });
 
 class CarController implements CarControllerInterface {
   public findAll = async (req: Request, res: Response) => {
@@ -48,7 +50,6 @@ class CarController implements CarControllerInterface {
   };
 
   public create = async (req: Request, res: Response, next: NextFunction) => {
-    const form = formidable({ multiples: false });
     try {
       form.parse(req, async (err, fields, files) => {
         // console.log(files);
@@ -68,14 +69,14 @@ class CarController implements CarControllerInterface {
         }
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore  incorrect type from formidable
-        const imageUrl = await saveImage(files.image.filepath);
+        const imageUrl = await saveImage(image.filepath);
 
         const result = await Car.create({
-          name: fields.name as string,
+          name: fields.name,
           cost: Number(fields.cost),
-          capacity: fields.capacity as unknown as Capacity,
-          image: imageUrl as string,
-        } as CarAttributes);
+          capacity: fields.capacity,
+          image: imageUrl,
+        });
 
         res.status(201).json({ message: "Created", data: result });
       });
@@ -85,26 +86,48 @@ class CarController implements CarControllerInterface {
     }
   };
 
-  public update = async (req: Request, res: Response) => {
+  public update = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      const { name, cost, capacity, image } = req.body;
+      form.parse(req, async (err, fields, files) => {
+        // console.log(files);
+        if (err) {
+          next(err);
+          return;
+        }
 
-      if (!id || (!name && !cost && !capacity && !image)) {
-        res.status(400).json({ message: "Bad request" });
-        return;
-      }
+        const { name, cost, capacity } = fields;
+        const { image } = files;
 
-      const car = await Car.findByPk(id);
-      if (!car) {
-        res.status(404).json({ message: "Car not found" });
-        return;
-      }
+        if (!name && !cost && !capacity && !image) {
+          res.status(400).json({ message: "Bad request" });
+          return;
+        }
 
-      await Car.update(req.body, { where: { id } });
+        const car = await Car.findByPk(id);
+        if (!car) {
+          res.status(404).json({ message: "Car not found" });
+          return;
+        }
 
-      res.json({
-        message: `Car with id: ${id} has been updated.`,
+        let imageUrl;
+        if (image) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore  incorrect type from formidable
+          imageUrl = await saveImage(image.filepath);
+        }
+
+        await Car.update(
+          {
+            ...fields,
+            ...(image && { image: imageUrl }),
+          },
+          { where: { id } }
+        );
+
+        res.json({
+          message: `Car with id: ${id} has been updated.`,
+        });
       });
     } catch (error) {
       logger.error(error);
