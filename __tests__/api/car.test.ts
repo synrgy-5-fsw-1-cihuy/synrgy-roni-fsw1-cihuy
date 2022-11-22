@@ -3,29 +3,31 @@ import request from "supertest";
 import app from "../../src/app";
 import Car from "../../src/models/car";
 
+const image = `${__dirname}/../../submission/diagram.png`;
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mock: any = {
   name: "bmw",
   cost: 3000,
   capacity: 2,
-  image: "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg",
+  image: image,
 };
 
 const createFalseMock = [
   {
     cost: 3000,
     capacity: 2,
-    image: "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg",
+    image: image,
   },
   {
     name: "bmw",
     capacity: 2,
-    image: "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg",
+    image: image,
   },
   {
     name: "bmw",
     cost: 3000,
-    image: "https://binarc4.zekhoi.dev/assets/img/cars/car01.min.jpg",
+    image: image,
   },
   {
     name: "bmw",
@@ -44,7 +46,14 @@ describe("Test Car API Endpoint", () => {
 
   describe("POST / => create a car", () => {
     it("should respond with a 201 status code", async () => {
-      await request(app).post("/api/cars").send(mock).expect(201);
+      await request(app)
+        .post("/api/cars")
+        .field("name", mock.name)
+        .field("cost", mock.cost)
+        .field("capacity", mock.capacity)
+        .attach("image", image)
+        .set("Content-Type", "multipart/form-data")
+        .expect(201);
     });
 
     it("should respond with a 400 status code", async () => {
@@ -68,7 +77,13 @@ describe("Test Car API Endpoint", () => {
         name: "bmw",
         cost: 3000,
       };
-      await request(app).put(`/api/cars/${car.id}`).send(payload).expect(200);
+      await request(app)
+        .put(`/api/cars/${car.id}`)
+        .field("name", payload.name)
+        .field("cost", payload.cost)
+        .attach("image", image)
+        .set("Content-Type", "multipart/form-data")
+        .expect(200);
     });
   });
 
