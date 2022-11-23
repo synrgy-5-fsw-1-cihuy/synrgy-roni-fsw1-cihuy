@@ -16,9 +16,12 @@
       "@constants/*": ["./constants/*"],
       "@controllers/*": ["./controllers/*"],
       "@database/*": ["./database/*"],
+      "@dto/*": ["./dto/*"],
       "@middlewares/*": ["./middlewares/*"],
       "@models/*": ["./models/*"],
+      "@repositories/*": ["./repositories/*"],
       "@routes/*": ["./routes/*"],
+      "@services/*": ["./services/*"],
       "@utils/*": ["./utils/*"]
     },
     "incremental": true,

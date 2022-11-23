@@ -2,20 +2,12 @@ import { DataTypes, Model } from "sequelize";
 
 import sequelize from "@configs/db.config";
 
-enum Capacity {
-  "small",
-  "medium",
-  "large",
-}
-
 class Car extends Model {
-  declare id: number;
-  declare name: string;
-  declare cost: number;
-  declare capacity: Capacity;
-  declare image: string;
-  declare readonly createdAt: Date;
-  declare readonly updatedAt: Date;
+  /**
+   * Helper method for defining associations.
+   * This method is not a part of Sequelize lifecycle.
+   * The `models/index` file will call this method automatically.
+   */
 }
 
 Car.init(
