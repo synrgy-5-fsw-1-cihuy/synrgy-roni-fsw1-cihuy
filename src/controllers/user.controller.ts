@@ -1,17 +1,29 @@
 import userService from "@services/user.service";
 import { Request, Response } from "express";
 
-const register = async (req: Request, res: Response) => {
-  const result = await userService.register(req.body);
+const registerUser = async (req: Request, res: Response) => {
+  const result = await userService.registerUser(req.body);
   res.status(result.status).json(result);
 };
 
-const login = async (req: Request, res: Response) => {
-  const result = await userService.login(req.body);
+const loginUser = async (req: Request, res: Response) => {
+  const result = await userService.loginUser(req.body);
+  res.status(result.status).json(result);
+};
+
+const updateUserRole = async (req: Request, res: Response) => {
+  const result = await userService.updateUserRole(req.body);
+  res.status(result.status).json(result);
+};
+
+const getCurrentUser = async (req: Request, res: Response) => {
+  const result = await userService.getCurrentUser(req.body);
   res.status(result.status).json(result);
 };
 
 export default {
-  register,
-  login,
+  registerUser,
+  loginUser,
+  updateUserRole,
+  getCurrentUser,
 };

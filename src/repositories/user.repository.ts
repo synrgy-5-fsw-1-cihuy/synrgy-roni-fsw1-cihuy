@@ -4,11 +4,12 @@ import { IUser } from "@dto/user.dto";
 
 const getUserByEmail = async (email: string) => {
   try {
-    return await User.findOne({
+    const result = await User.findOne({
       where: {
         email,
       },
     });
+    return result;
   } catch (error) {
     throw error;
   }
@@ -16,26 +17,65 @@ const getUserByEmail = async (email: string) => {
 
 const createUser = async (user: IUser) => {
   try {
-    return await User.create({
+    const result = await User.create({
       name: user.name,
       email: user.email,
       password: user.password,
     });
+    return result;
   } catch (error) {
     throw error;
   }
 };
 
-const getRoleById = async (user: IUser) => {
+const getRoleById = async (email: string) => {
   try {
-    return await User.create({
-      name: user.name,
-      email: user.email,
-      password: user.password,
+    const result = await User.findOne({
+      where: {
+        email,
+      },
     });
+    return result;
   } catch (error) {
     throw error;
   }
 };
 
-export default { getUserByEmail, createUser };
+const updateRoleById = async (email: string) => {
+  try {
+    const result = await User.findOne({
+      where: {
+        email,
+      },
+    });
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const updateRefreshTokenById = async (id: string, refreshToken: string) => {
+  try {
+    const result = await User.update(
+      {
+        refreshToken,
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+    return result;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export default {
+  getUserByEmail,
+  createUser,
+  getRoleById,
+  updateRoleById,
+  updateRefreshTokenById,
+};

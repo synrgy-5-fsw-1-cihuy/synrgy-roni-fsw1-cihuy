@@ -11,9 +11,7 @@ const PORT = env.PORT || 8080;
 const start = async () => {
   try {
     await database.sync();
-    logger.info(
-      "⚡️[database]: Database connection has been established successfully."
-    );
+    logger.info("⚡️[database]: Database connection has been established successfully.");
 
     app.listen(PORT, () => {
       logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);

@@ -4,5 +4,6 @@
   "arrowParens": "always",
   "singleQuote": false,
   "jsxSingleQuote": false,
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "printWidth": 120
 }

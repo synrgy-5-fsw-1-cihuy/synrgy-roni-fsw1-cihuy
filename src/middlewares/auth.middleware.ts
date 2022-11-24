@@ -1,23 +1,54 @@
 import { NextFunction, Request, Response } from "express";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
-const authCarManager = (req: Request, res: Response, next: NextFunction) => {
-  // const { id } = req.params;
-  // const { userId } = req.body;
+import env from "@constants/env";
 
-  // if (id !== userId) {
-  //   return res.status(401).json({ message: "Unauthorized" });
-  next();
+import { RequestWithUser } from "@dto/user.dto";
+
+export interface CustomRequest extends Request {
+  user: string | JwtPayload;
+}
+
+export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) {
+      return res.status(401).json({
+        status: 401,
+        message: "Unauthorized",
+        data: null,
+      });
+    }
+
+    const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET);
+    (req as CustomRequest).user = decoded;
+
+    next();
+  } catch (error) {
+    res.status(403).json({
+      status: 403,
+      message: "Forbidden",
+      data: null,
+    });
+  }
 };
 
-// const authJWTCookie = (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     const { token } = req.cookies;
-//     const user = jwt.verify(token, process.env.JWT_SECRET);
-//     req.user = user;
-//     next();
-//   } catch (error) {
-//     return res.status(401).json({ message: "Unauthorized" });
-//   }
-// };
-
-export default { authCarManager };
+export const isAuthorized = (allowed: string[]) => async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = (req as RequestWithUser).user;
+    if (allowed.includes(user.role)) {
+      return res.status(403).json({
+        status: 403,
+        message: "Forbidden",
+        data: null,
+      });
+    }
+    next();
+  } catch (error) {
+    res.status(403).json({
+      status: 403,
+      message: "Forbidden",
+      data: null,
+    });
+  }
+};

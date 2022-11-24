@@ -42,9 +42,7 @@ const format = winston.format.combine(
   // Tell Winston that the logs must be colored
   winston.format.colorize({ all: true }),
   // Define the format of the message showing the timestamp, the level and the message
-  winston.format.printf(
-    (info) => `${info.timestamp} ${info.level}: ${info.message}`
-  )
+  winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
 );
 
 // Define which transports the logger must use to print out messages.

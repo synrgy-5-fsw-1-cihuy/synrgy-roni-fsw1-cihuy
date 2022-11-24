@@ -6,12 +6,8 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": ["@typescript-eslint", "simple-import-sort", "unused-imports"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "unused-imports", "prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
@@ -46,12 +42,18 @@
           ["^@constants"],
           // controllers
           ["^@controllers"],
+          // database
+          ["^@database"],
+          // dto
+          ["^@dto"],
           // middlewares
           ["^@middlewares"],
-          // models
-          ["^@models"],
+          // repositories
+          ["^@repositories"],
           // routes
           ["^@routes"],
+          // services
+          ["^@services"],
           // utils
           ["^@utils"],
           // relative paths up until 3 level

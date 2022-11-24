@@ -1,25 +1,24 @@
-/* eslint-disable no-useless-catch */
-import { IUser } from "@dto/user.dto";
-import UserRepository from "@repositories/user.repository";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
-import logger from "@/utils/logger";
+import { generateAccessToken } from "@/utils/jwt";
 
-const register = async (user: IUser) => {
+import { IUser } from "@dto/user.dto";
+
+import UserRepository from "@repositories/user.repository";
+
+import logger from "@utils/logger";
+
+const registerUser = async (user: IUser) => {
   try {
-    const { name, email, password } = user;
+    const { email, password } = user;
 
     const isUserExists = await UserRepository.getUserByEmail(email);
 
     if (isUserExists) {
       return {
         status: 422,
-        message: "User already registered",
-        data: {
-          name,
-          email: isUserExists.email,
-        },
+        message: "User already exists",
+        data: null,
       };
     }
 
@@ -34,47 +33,121 @@ const register = async (user: IUser) => {
       status: 201,
       message: "User created successfully",
       data: {
-        result,
+        name: result.name,
+        email: result.email,
+        role: result.role,
       },
     };
   } catch (error) {
     logger.error(error);
-    throw {
+    if (error instanceof Error) {
+      return {
+        status: 500,
+        message: error.message,
+        data: null,
+      };
+    }
+    return {
       status: 500,
-      message: "User created successfully",
+      message: "Internal server error",
       data: null,
     };
   }
 };
 
-const login = async (user: IUser) => {
+const loginUser = async (user: IUser) => {
   try {
     const { email, password } = user;
     const userExists = await UserRepository.getUserByEmail(email);
 
     if (!userExists) {
-      throw new Error("User does not exist");
+      return {
+        status: 404,
+        message: "User not found",
+        data: null,
+      };
     }
 
-    const isPasswordValid = await bcrypt.compare(password, userExists.password);
+    const isPasswordValid = await bcrypt.compareSync(password, userExists.password);
 
     if (!isPasswordValid) {
-      throw new Error("Invalid password");
+      return {
+        status: 401,
+        message: "Invalid credentials",
+        data: null,
+      };
     }
 
-    const token = jwt.sign({ ...userExists.dataValues }, "secret", {
-      expiresIn: "1h",
-    });
+    const accessToken = generateAccessToken({ id: userExists.id, role: userExists.role });
+
+    // const refreshToken = jwt.sign(
+    //   {
+    //     name: userExists.name,
+    //     // email: userExists.email,
+    //     role: userExists.role,
+    //   },
+    //   env.JWT_ACCESS_SECRET,
+    //   {
+    //     expiresIn: "24h",
+    //   }
+    // );
+
+    // await UserRepository.updateRefreshTokenById(userExists.id, refreshToken);
 
     return {
       status: 200,
       message: "User login successfully",
-      data: token,
+      data: accessToken,
     };
   } catch (error) {
     logger.error(error);
-    throw error;
+    if (error instanceof Error) {
+      return {
+        status: 500,
+        message: error.message,
+        data: user,
+      };
+    }
+    return {
+      status: 500,
+      message: "Internal server error",
+      data: user,
+    };
   }
 };
 
-export default { register, login };
+// eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-explicit-any
+const updateUserRole = async (user: any) => {
+  try {
+    return {
+      status: 500,
+      message: "Internal server error",
+      data: user,
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: "Internal server error",
+      data: user,
+    };
+  }
+};
+
+// eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-explicit-any
+const getCurrentUser = async (user: any) => {
+  try {
+    return {
+      status: 500,
+      message: "Internal server error",
+      data: null,
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      message: "Internal server error",
+      data: null,
+    };
+  }
+};
+
+export default { registerUser, loginUser, updateUserRole, getCurrentUser };

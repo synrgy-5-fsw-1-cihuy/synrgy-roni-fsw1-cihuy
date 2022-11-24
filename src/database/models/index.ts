@@ -12,17 +12,12 @@ const db: any = {};
 
 fs.readdirSync(__dirname)
   .filter((file: string) => {
-    return (
-      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".ts"
-    );
+    return file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".ts";
   })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   .forEach((file: any) => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-      Sequelize.DataTypes
-    );
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 

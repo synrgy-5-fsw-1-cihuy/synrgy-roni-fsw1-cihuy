@@ -1,6 +1,6 @@
-# Binar Challenge Chapter 5
+# Binar Challenge Chapter 6
 
-Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 5
+Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 6
 
 - Preview : [Open](https://binarc5.zekhoi.dev/api/cars/)
 - Postman : [Open](https://www.postman.com/zekhoi/workspace/binar-synrgy/collection/14844670-019b04c1-0227-4c16-a459-0e8089f9ce58?action=share&creator=14844670)

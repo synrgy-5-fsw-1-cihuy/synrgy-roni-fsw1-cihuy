@@ -28,7 +28,8 @@
     "pg": "^8.8.0",
     "sequelize": "^6.25.5",
     "swagger-ui-express": "^4.6.0",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

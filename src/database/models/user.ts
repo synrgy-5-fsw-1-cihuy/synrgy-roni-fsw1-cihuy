@@ -4,8 +4,11 @@ import { DataTypes, Model } from "sequelize";
 import sequelize from "@configs/db.config";
 
 class User extends Model {
+  id!: string;
+  name!: string;
   email!: string;
   password!: string;
+  role!: string;
   /**
    * Helper method for defining associations.
    * This method is not a part of Sequelize lifecycle.
@@ -27,6 +30,10 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    refreshToken: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     role: {
       type: DataTypes.ENUM,
