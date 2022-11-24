@@ -1,75 +1,75 @@
-/* eslint-disable no-useless-catch */
 import User from "@database/models/user";
-import { IUser } from "@dto/user.dto";
+
+import { IRegisterUser } from "@dto/user.dto";
 
 const getUserByEmail = async (email: string) => {
-  try {
-    const result = await User.findOne({
-      where: {
-        email,
-      },
-    });
-    return result;
-  } catch (error) {
-    throw error;
-  }
+  // try {
+  const result = await User.findOne({
+    where: {
+      email,
+    },
+  });
+  return result;
+  // } catch (error) {
+  //   throw error;
+  // }
 };
 
-const createUser = async (user: IUser) => {
-  try {
-    const result = await User.create({
-      name: user.name,
-      email: user.email,
-      password: user.password,
-    });
-    return result;
-  } catch (error) {
-    throw error;
-  }
+const createUser = async (user: IRegisterUser) => {
+  // try {
+  const result = await User.create({
+    name: user.name,
+    email: user.email,
+    password: user.password,
+  });
+  return result;
+  // } catch (error) {
+  //   throw error;
+  // }
 };
 
 const getRoleById = async (email: string) => {
-  try {
-    const result = await User.findOne({
-      where: {
-        email,
-      },
-    });
-    return result;
-  } catch (error) {
-    throw error;
-  }
+  // try {
+  const result = await User.findOne({
+    where: {
+      email,
+    },
+  });
+  return result;
+  // } catch (error) {
+  //   throw error;
+  // }
 };
 
 const updateRoleById = async (email: string) => {
-  try {
-    const result = await User.findOne({
-      where: {
-        email,
-      },
-    });
-    return result;
-  } catch (error) {
-    throw error;
-  }
+  // try {
+  const result = await User.findOne({
+    where: {
+      email,
+    },
+  });
+  return result;
+  // } catch (error) {
+  //   throw error;
+  // }
 };
 
 const updateRefreshTokenById = async (id: string, refreshToken: string) => {
-  try {
-    const result = await User.update(
-      {
-        refreshToken,
+  // try {
+  const result = await User.update(
+    {
+      refreshToken,
+    },
+    {
+      where: {
+        id,
       },
-      {
-        where: {
-          id,
-        },
-      }
-    );
-    return result;
-  } catch (error) {
-    throw error;
-  }
+    }
+  );
+  return result;
+  // } catch (error) {
+  //   throw error;
+  // }
 };
 
 export default {

@@ -15,6 +15,6 @@ UserRouter.post("/login", validateSchema(userRegisterDTO), UserController.loginU
 
 UserRouter.post("/roles", isAuthorized(["superadmin"]), UserController.updateUserRole);
 
-// UserRouter.post("/me", UserController.getCurrentUser);
+UserRouter.post("/me", UserController.getCurrentUser);
 
 export default UserRouter;

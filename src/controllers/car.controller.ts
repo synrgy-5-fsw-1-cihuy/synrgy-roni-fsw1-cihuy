@@ -3,6 +3,11 @@ import { Request, Response } from "express";
 
 const getAllCar = async (req: Request, res: Response) => {
   try {
+    res.status(200).json({
+      status: 200,
+      message: "Get all car",
+      data: null,
+    });
   } catch (error) {}
 };
 

@@ -2,10 +2,11 @@ import express from "express";
 
 import CarController from "@controllers/car.controller";
 
-import { isAuthorized } from "@middlewares/auth.middleware";
+import { isAuthenticated, isAuthorized } from "@middlewares/auth.middleware";
 
 const CarRouter = express.Router();
 
+CarRouter.use(isAuthenticated);
 CarRouter.use(isAuthorized(["admin", "superadmin"]));
 
 CarRouter.get("/", CarController.getAllCar);

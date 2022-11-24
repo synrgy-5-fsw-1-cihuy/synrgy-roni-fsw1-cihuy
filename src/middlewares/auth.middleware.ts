@@ -5,6 +5,8 @@ import env from "@constants/env";
 
 import { RequestWithUser } from "@dto/user.dto";
 
+import AppError from "@utils/error";
+
 export interface CustomRequest extends Request {
   user: string | JwtPayload;
 }
@@ -13,11 +15,7 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
   try {
     const token = req.headers.authorization?.split(" ")[1];
     if (!token) {
-      return res.status(401).json({
-        status: 401,
-        message: "Unauthorized",
-        data: null,
-      });
+      throw new AppError("Unauthenticated", 401);
     }
 
     const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET);
@@ -25,30 +23,18 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
 
     next();
   } catch (error) {
-    res.status(403).json({
-      status: 403,
-      message: "Forbidden",
-      data: null,
-    });
+    next(error);
   }
 };
 
 export const isAuthorized = (allowed: string[]) => async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = (req as RequestWithUser).user;
-    if (allowed.includes(user.role)) {
-      return res.status(403).json({
-        status: 403,
-        message: "Forbidden",
-        data: null,
-      });
+    if (!allowed.includes(user.role)) {
+      throw new AppError("Unauthorized", 403);
     }
     next();
   } catch (error) {
-    res.status(403).json({
-      status: 403,
-      message: "Forbidden",
-      data: null,
-    });
+    next(error);
   }
 };
