@@ -41,25 +41,19 @@ const getRoleById = async (email: string) => {
   // }
 };
 
-const updateRoleById = async (email: string) => {
+const getUserById = async (id: string) => {
   // try {
-  const result = await User.findOne({
-    where: {
-      email,
-    },
-  });
+  const result = await User.findByPk(id);
   return result;
   // } catch (error) {
   //   throw error;
   // }
 };
 
-const updateRefreshTokenById = async (id: string, refreshToken: string) => {
+const updateRoleById = async (role: string, id: string) => {
   // try {
   const result = await User.update(
-    {
-      refreshToken,
-    },
+    { role },
     {
       where: {
         id,
@@ -77,5 +71,5 @@ export default {
   createUser,
   getRoleById,
   updateRoleById,
-  updateRefreshTokenById,
+  getUserById,
 };

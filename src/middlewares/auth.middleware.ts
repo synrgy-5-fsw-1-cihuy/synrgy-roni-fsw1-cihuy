@@ -1,11 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import jwt, { JwtPayload } from "jsonwebtoken";
-
-import env from "@constants/env";
+import { JwtPayload } from "jsonwebtoken";
 
 import { RequestWithUser } from "@dto/user.dto";
 
 import AppError from "@utils/error";
+import { verifyAccessToken } from "@utils/jwt";
 
 export interface CustomRequest extends Request {
   user: string | JwtPayload;
@@ -18,7 +17,7 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
       throw new AppError("Unauthenticated", 401);
     }
 
-    const decoded = jwt.verify(token, env.JWT_ACCESS_SECRET);
+    const decoded = verifyAccessToken(token);
     (req as CustomRequest).user = decoded;
 
     next();

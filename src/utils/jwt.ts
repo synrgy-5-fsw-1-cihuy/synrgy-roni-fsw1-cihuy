@@ -11,3 +11,7 @@ export const generateAccessToken = (user: UserAccessDecoded) => {
 export const generateRefreshToken = (user: UserRefreshDecoded) => {
   return jwt.sign(user, env.JWT_REFRESH_SECRET, { expiresIn: "1d" });
 };
+
+export const verifyAccessToken = (token: string) => {
+  return jwt.verify(token, env.JWT_ACCESS_SECRET);
+};

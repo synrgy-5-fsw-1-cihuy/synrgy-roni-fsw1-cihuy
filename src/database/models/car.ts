@@ -3,6 +3,11 @@ import { DataTypes, Model } from "sequelize";
 import sequelize from "@configs/db.config";
 
 class Car extends Model {
+  id!: string;
+  name!: string;
+  cost!: number;
+  capacity!: string;
+  image!: string;
   /**
    * Helper method for defining associations.
    * This method is not a part of Sequelize lifecycle.
@@ -12,11 +17,6 @@ class Car extends Model {
 
 Car.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
     name: {
       type: DataTypes.STRING(128),
       allowNull: false,
@@ -33,8 +33,6 @@ Car.init(
       type: DataTypes.STRING(128),
       allowNull: false,
     },
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE,
   },
   {
     tableName: "cars",
