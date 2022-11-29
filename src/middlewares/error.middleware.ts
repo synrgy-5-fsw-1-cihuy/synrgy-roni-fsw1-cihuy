@@ -18,7 +18,7 @@ const errorHandler = (error: Error, req: Request, res: Response, next: NextFunct
   }
   res.status(400).json({
     status: 400,
-    message: "Bad Request",
+    message: error.message,
     data: null,
   });
 };

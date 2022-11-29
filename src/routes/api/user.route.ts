@@ -1,6 +1,5 @@
 import express from "express";
 
-import authController from "@controllers/auth.controller";
 import UserController from "@controllers/user.controller";
 
 import { userLoginDTO, userRegisterDTO } from "@dto/user.dto";
@@ -10,9 +9,9 @@ import { validateSchema } from "@middlewares/validate.middleware";
 
 const UserRouter = express.Router();
 
-UserRouter.post("/register", validateSchema(userLoginDTO), authController.register);
+UserRouter.post("/register", validateSchema(userLoginDTO), UserController.register);
 
-UserRouter.post("/login", validateSchema(userRegisterDTO), authController.login);
+UserRouter.post("/login", validateSchema(userRegisterDTO), UserController.login);
 
 UserRouter.post("/role", isAuthenticated, isAuthorized(["superadmin"]), UserController.updateUserRole);
 
