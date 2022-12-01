@@ -55,6 +55,7 @@ export const carUpdateDTO = object({
  *          type: number
  *          description: The id of the user who created the car
  *        updated_by:
+ *          type: number
  *          description: The id of the user who updated the car
  *        deleted_by:
  *          type: number
