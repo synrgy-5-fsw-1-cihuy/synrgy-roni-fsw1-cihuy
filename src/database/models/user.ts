@@ -4,7 +4,7 @@ import { DataTypes, Model } from "sequelize";
 import sequelize from "@configs/db.config";
 
 class User extends Model {
-  id!: string;
+  id!: number;
   name!: string;
   email!: string;
   password!: string;
@@ -19,7 +19,7 @@ class User extends Model {
 User.init(
   {
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     email: {

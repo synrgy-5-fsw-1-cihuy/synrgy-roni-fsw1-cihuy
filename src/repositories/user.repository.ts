@@ -41,7 +41,7 @@ const getRoleById = async (email: string) => {
   // }
 };
 
-const getUserById = async (id: string) => {
+const getUserById = async (id: number) => {
   // try {
   const result = await User.findByPk(id);
   return result;
@@ -50,7 +50,7 @@ const getUserById = async (id: string) => {
   // }
 };
 
-const updateRoleById = async (role: string, id: string) => {
+const updateRoleById = async (role: string, id: number) => {
   // try {
   const result = await User.update(
     { role },
