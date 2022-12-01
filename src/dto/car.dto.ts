@@ -51,6 +51,14 @@ export const carUpdateDTO = object({
  *        image:
  *          type: string
  *          description: The image of the car
+ *        created_by:
+ *          type: number
+ *          description: The id of the user who created the car
+ *        updated_by:
+ *          description: The id of the user who updated the car
+ *        deleted_by:
+ *          type: number
+ *          description: The id of the user who deleted the car
  *        createdAt:
  *          type: string
  *          format: date-time
@@ -65,6 +73,9 @@ export const carUpdateDTO = object({
  *        cost: 10000
  *        capacity: small
  *        image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
+ *        created_by: 2
+ *        updated_by: 3
+ *        deleted_by: null
  *        createdAt: 2021-05-01T00:00:00.000Z
  *        updatedAt: 2021-05-01T00:00:00.000Z
  */
@@ -95,6 +106,9 @@ export const carUpdateDTO = object({
  *          cost: 10000
  *          capacity: small
  *          image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
+ *          created_by: 2
+ *          updated_by: null
+ *          deleted_by: null
  *          createdAt: 2021-05-01T00:00:00.000Z
  *          updatedAt: 2021-05-01T00:00:00.000Z
  */
@@ -123,6 +137,9 @@ export const carUpdateDTO = object({
  *          cost: 10000
  *          capacity: small
  *          image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
+ *          created_by: 2
+ *          updated_by: null
+ *          deleted_by: null
  *          createdAt: 2021-05-01T00:00:00.000Z
  *          updatedAt: 2021-05-01T00:00:00.000Z
  */
@@ -177,6 +194,9 @@ export const carUpdateDTO = object({
  *          cost: 10000
  *          capacity: small
  *          image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
+ *          created_by: 2
+ *          updated_by: null
+ *          deleted_by: null
  *          createdAt: 2021-05-01T00:00:00.000Z
  *          updatedAt: 2021-05-01T00:00:00.000Z
  */

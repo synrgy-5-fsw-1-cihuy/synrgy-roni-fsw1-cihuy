@@ -14,7 +14,7 @@ const definition = {
     },
     {
       url: `http://localhost:${env.PORT}`,
-      description: "Development server",
+      description: "Development local server",
     },
   ],
 };

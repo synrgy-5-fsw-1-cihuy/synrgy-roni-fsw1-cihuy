@@ -78,7 +78,7 @@ CarRouter.get("/:id", CarController.getCarById);
  *          schema:
  *           $ref: '#/components/schemas/CarCreateRequest'
  *      responses:
- *        200:
+ *        201:
  *          description: The car was successfully created
  *          content:
  *            application/json:
