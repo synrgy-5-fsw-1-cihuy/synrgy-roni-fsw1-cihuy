@@ -2,11 +2,11 @@ import { NextFunction, Request, Response } from "express";
 
 import { RequestWithUser } from "@dto/user.dto";
 
-import userService from "@services/user.service";
+import UserService from "@services/user.service";
 const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, email, password } = req.body;
-    const result = await userService.register({
+    const result = await UserService.register({
       name,
       email,
       password,
@@ -24,7 +24,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password } = req.body;
-    const result = await userService.login({
+    const result = await UserService.login({
       email,
       password,
     });
@@ -40,7 +40,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 const updateUserRole = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, role } = req.body;
-    const result = await userService.updateUserRole(email, role);
+    const result = await UserService.updateUserRole(email, role);
     res.status(200).json({
       status: 200,
       message: "User role updated successfully",
@@ -54,7 +54,7 @@ const updateUserRole = async (req: Request, res: Response, next: NextFunction) =
 const getCurrentUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = (req as RequestWithUser).user;
-    const result = await userService.getCurrentUser(user);
+    const result = await UserService.getCurrentUser(user);
     res.status(200).json({
       status: 200,
       message: "User fetched successfully",
@@ -66,7 +66,8 @@ const getCurrentUser = async (req: Request, res: Response, next: NextFunction) =
 };
 
 export default {
-  login,register,
+  login,
+  register,
   updateUserRole,
   getCurrentUser,
 };
