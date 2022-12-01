@@ -13,6 +13,6 @@ This repository is a collection of my study notes for Fullstack Web Development 
 - [Challenge 3](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-3) => Javascript algorithm, logic, filter
 - [Challenge 4](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-4) => Backend (Basic HTTP server, render HTML)
 - [Challenge 5](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-5) => Backend (Basic Express.js, RESTful API)
-- [Challenge 6](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-6) => Backend (Express.js, RESTful API with JWT authentication)
+- [Challenge 6](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-6) => Backend (Express.js, RESTful API with JWT authentication, Swagger UI)
 - [Challenge 7](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-7) => Coming soon
 - [Challenge 8](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-8) => Coming soon
