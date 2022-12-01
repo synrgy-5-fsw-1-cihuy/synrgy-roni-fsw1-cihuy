@@ -1,8 +1,8 @@
 import Car from "@database/models/car";
 
-import { ICarCreate } from "@dto/car.dto";
+import { ICar } from "@dto/car.dto";
 
-const createCar = async (data: ICarCreate) => {
+const createCar = async (data: ICar) => {
   const result = await Car.create({
     ...data,
   });
@@ -19,12 +19,15 @@ const getCarById = async (id: string) => {
   return result;
 };
 
-const updateCar = async (data: ICarCreate, id: string) => {
-  const result = await Car.update(data, {
-    where: {
-      id,
-    },
-  });
+const updateCar = async (data: ICar, id: string) => {
+  const result = await Car.update(
+    { ...data },
+    {
+      where: {
+        id,
+      },
+    }
+  );
   return result;
 };
 

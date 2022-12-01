@@ -4,7 +4,7 @@ import { Options } from "sequelize";
 dotenv.config();
 
 const NODE_ENV = process.env.NODE_ENV;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT ?? 8080;
 
 const DB_HOST = process.env.DB_HOST;
 const DB_USER = process.env.DB_USER;

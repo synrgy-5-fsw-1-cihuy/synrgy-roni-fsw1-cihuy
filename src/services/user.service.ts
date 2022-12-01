@@ -61,6 +61,10 @@ const updateUserRole = async (email: string, role: string) => {
 
   const result = await UserRepository.updateRoleById(role, user.id);
 
+  if (!result) {
+    throw new AppError("Something went wrong", 400);
+  }
+
   return result;
 };
 

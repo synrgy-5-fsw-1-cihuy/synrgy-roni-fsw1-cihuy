@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
+import { RequestWithUser } from "@dto/user.dto";
+
 import CarService from "@services/car.service";
 
 const getAllCar = async (req: Request, res: Response, next: NextFunction) => {
@@ -31,7 +33,7 @@ const getCarById = async (req: Request, res: Response, next: NextFunction) => {
 
 const createCar = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await CarService.createCar(req.body);
+    const result = await CarService.createCar(req.body, (req as RequestWithUser).user.id);
     res.status(201).json({
       status: 201,
       message: "Success",
@@ -46,7 +48,7 @@ const updateCar = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     const data = req.body;
-    const result = await CarService.updateCar(data, id);
+    const result = await CarService.updateCar(data, id, (req as RequestWithUser).user.id);
     res.status(200).json({
       status: 200,
       message: "Success",

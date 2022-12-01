@@ -8,6 +8,9 @@ class Car extends Model {
   cost!: number;
   capacity!: string;
   image!: string;
+  created_by!: number;
+  deleted_by!: number;
+  updated_by!: number;
   /**
    * Helper method for defining associations.
    * This method is not a part of Sequelize lifecycle.
@@ -32,6 +35,18 @@ Car.init(
     image: {
       type: DataTypes.STRING(128),
       allowNull: false,
+    },
+    created_by: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    deleted_by: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    updated_by: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   },
   {

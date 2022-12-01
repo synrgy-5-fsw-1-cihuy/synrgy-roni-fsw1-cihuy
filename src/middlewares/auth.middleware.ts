@@ -30,7 +30,7 @@ export const isAuthorized = (allowed: string[]) => async (req: Request, res: Res
   try {
     const user = (req as RequestWithUser).user;
     if (!allowed.includes(user.role)) {
-      throw new AppError("Unauthorized", 403);
+      throw new AppError("Forbidden", 403);
     }
     next();
   } catch (error) {
