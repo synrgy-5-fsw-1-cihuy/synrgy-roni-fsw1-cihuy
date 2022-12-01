@@ -37,5 +37,8 @@ Ada beberapa kebingungan yang saya alami dalam hal createdBy, deletedBy, dan upd
 
 ## Authentication
 
+Try out login with example user (superadmin)
+![Login](./submission/login.png)
+
 Masukan accessToken pada form Authorize
 ![Auth](./submission/auth.png)
