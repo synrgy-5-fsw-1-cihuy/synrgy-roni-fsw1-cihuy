@@ -2,7 +2,7 @@
 
 Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 6
 
-- Preview : [Open](https://binarc6.zekhoi.dev/api/cars/)
+- Preview : [Open](https://binarc6.zekhoi.dev/docs)
 
 ## Diagram
 
