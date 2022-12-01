@@ -9,7 +9,12 @@ const definition = {
   },
   servers: [
     {
+      url: "https://binarc6.zekhoi.dev/",
+      description: "Production server",
+    },
+    {
       url: `http://localhost:${env.PORT}`,
+      description: "Development server",
     },
   ],
 };
