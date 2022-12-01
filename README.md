@@ -12,7 +12,7 @@ Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 6
 
 You can see the API documentation at
 
-- Swagger UI : [http://localhost:8080/docs](http://localhost:8080/docs)
+- Swagger UI : [https://binarc6.zekhoi.dev/docs](https://binarc6.zekhoi.dev/docs)
 
 # Notes
 
