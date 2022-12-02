@@ -202,16 +202,9 @@ export interface RequestWithUser extends Request {
  *        message:
  *          type: string
  *          description: The message
- *        data:
- *          type: array
- *          items:
- *            type: integer
- *            description: Update status
  *      example:
  *        status: 200
  *        message: User successfully created
- *        data:
- *          - 1
  */
 
 /**

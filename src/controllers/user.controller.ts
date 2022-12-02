@@ -40,11 +40,10 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 const updateUserRole = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, role } = req.body;
-    const result = await UserService.updateUserRole(email, role);
+    await UserService.updateUserRole(email, role);
     res.status(200).json({
       status: 200,
       message: "User role updated successfully",
-      data: result,
     });
   } catch (error) {
     next(error);
