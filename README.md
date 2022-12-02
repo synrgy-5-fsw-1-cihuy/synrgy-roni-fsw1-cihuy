@@ -16,7 +16,7 @@ You can see the API documentation at
 
 # Notes
 
-Ada 4 hal tidak saya buat di submission ini, yaitu :
+Ada 2 hal tidak saya buat di submission ini, yaitu :
 
 - migrations
 - seeders
