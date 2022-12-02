@@ -13,8 +13,6 @@ const getAllCar = async () => {
   const result = await Car.findAll({
     where: {
       available: true,
-      deletedBy: null,
-      deletedAt: null,
     },
   });
   return result;
