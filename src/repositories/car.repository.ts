@@ -31,9 +31,6 @@ const updateCar = async (data: ICar, id: string) => {
     {
       where: {
         id,
-        available: true,
-        deletedBy: null,
-        deletedAt: null,
       },
     }
   );
