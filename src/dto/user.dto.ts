@@ -51,6 +51,37 @@ export interface RequestWithUser extends Request {
  * @swagger
  * components:
  *  schemas:
+ *    User:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: string
+ *          description: The auto-generated id of the user
+ *        name:
+ *          type: string
+ *          description: The name of the user
+ *        email:
+ *          type: number
+ *          description: The cost of the user
+ *        password:
+ *          type: string
+ *          description: The password of the user
+ *        role:
+ *          type: string
+ *          enum: [member, admin, superadmin]
+ *          description: The role of the user
+ *      example:
+ *        id: 2
+ *        name: John Doe
+ *        email: johndoe@email.com
+ *        password: $2b$10$1UknZW0SnBGPAIQvnM.XIOnOUnBD11v5twQLEfjEhaqk24nrMGUX6
+ *        role: member
+ */
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
  *    UserRegisterRequest:
  *      type: object
  *      required:
@@ -199,9 +230,12 @@ export interface RequestWithUser extends Request {
  *        data:
  *          type: object
  *          properties:
- *            id:
- *              type: number
- *              description: The user's id
+ *            name:
+ *              type: string
+ *              description: The user's name
+ *            email:
+ *              type: string
+ *              description: The user's email
  *            role:
  *              type: string
  *              description: The user's role
@@ -209,7 +243,8 @@ export interface RequestWithUser extends Request {
  *        status: 200
  *        message: User fetched successfully
  *        data:
- *          id: 7
+ *          name: John Doe
+ *          email: johndoe@email.com
  *          role: member
  */
 

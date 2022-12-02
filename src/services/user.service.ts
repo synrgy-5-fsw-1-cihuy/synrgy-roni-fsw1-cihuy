@@ -75,7 +75,11 @@ const getCurrentUser = async (user: UserAccessDecoded) => {
     throw new AppError("User not found", 404);
   }
 
-  return user;
+  return {
+    name: userExists.name,
+    email: userExists.email,
+    role: userExists.role,
+  };
 };
 
 export default { login, register, updateUserRole, getCurrentUser };

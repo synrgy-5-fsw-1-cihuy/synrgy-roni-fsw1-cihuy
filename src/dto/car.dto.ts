@@ -5,9 +5,10 @@ export interface ICar {
   cost: number;
   capacity: string;
   image: string;
-  created_by: number;
-  deleted_by: number;
-  updated_by: number;
+  available: boolean;
+  createdBy: number;
+  deletedBy: number;
+  updatedBy: number;
 }
 
 export const carCreateDTO = object({
@@ -51,13 +52,16 @@ export const carUpdateDTO = object({
  *        image:
  *          type: string
  *          description: The image of the car
- *        created_by:
+ *        available:
+ *          type: boolean
+ *          description: The availability of the car
+ *        createdBy:
  *          type: number
  *          description: The id of the user who created the car
- *        updated_by:
+ *        updatedBy:
  *          type: number
  *          description: The id of the user who updated the car
- *        deleted_by:
+ *        deletedBy:
  *          type: number
  *          description: The id of the user who deleted the car
  *        createdAt:
@@ -74,9 +78,10 @@ export const carUpdateDTO = object({
  *        cost: 10000
  *        capacity: small
  *        image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
- *        created_by: 2
- *        updated_by: 3
- *        deleted_by: null
+ *        available: true
+ *        createdBy: 2
+ *        updatedBy: 3
+ *        deletedBy: null
  *        createdAt: 2021-05-01T00:00:00.000Z
  *        updatedAt: 2021-05-01T00:00:00.000Z
  */
@@ -107,9 +112,10 @@ export const carUpdateDTO = object({
  *          cost: 10000
  *          capacity: small
  *          image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
- *          created_by: 2
- *          updated_by: null
- *          deleted_by: null
+ *          available: true
+ *          createdBy: 2
+ *          updatedBy: null
+ *          deletedBy: null
  *          createdAt: 2021-05-01T00:00:00.000Z
  *          updatedAt: 2021-05-01T00:00:00.000Z
  */
@@ -138,9 +144,10 @@ export const carUpdateDTO = object({
  *          cost: 10000
  *          capacity: small
  *          image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
- *          created_by: 2
- *          updated_by: null
- *          deleted_by: null
+ *          available: true
+ *          createdBy: 2
+ *          updatedBy: null
+ *          deletedBy: null
  *          createdAt: 2021-05-01T00:00:00.000Z
  *          updatedAt: 2021-05-01T00:00:00.000Z
  */
@@ -195,9 +202,10 @@ export const carUpdateDTO = object({
  *          cost: 10000
  *          capacity: small
  *          image: https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2021/c-hr/01.png
- *          created_by: 2
- *          updated_by: null
- *          deleted_by: null
+ *          available: true
+ *          createdBy: 2
+ *          updatedBy: null
+ *          deletedBy: null
  *          createdAt: 2021-05-01T00:00:00.000Z
  *          updatedAt: 2021-05-01T00:00:00.000Z
  */
@@ -223,6 +231,9 @@ export const carUpdateDTO = object({
  *        image:
  *          type: string
  *          description: The image of the car
+ *        available:
+ *          type: boolean
+ *          description: The availability of the car
  *      example:
  *        name: BMW
  *        cost: 20000
@@ -235,16 +246,9 @@ export const carUpdateDTO = object({
  *        message:
  *          type: string
  *          description: The message
- *        data:
- *          type: array
- *          items:
- *            type: integer
- *            description: Update status
  *      example:
  *        status: 200
  *        message: Success
- *        data:
- *          - 1
  */
 
 /**
@@ -260,11 +264,7 @@ export const carUpdateDTO = object({
  *        message:
  *          type: string
  *          description: The message
- *        data:
- *          type: number
- *          description: Update status
  *      example:
  *        status: 200
  *        message: Success
- *        data: 1
  */

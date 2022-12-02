@@ -20,12 +20,8 @@ Ada 4 hal tidak saya buat di submission ini, yaitu :
 
 - migrations
 - seeders
-- deleted_by (soft delete)
-- deleted_at (soft delete)
 
-Saya mau membiasakan memakai typescript jadi mohon maaf jika ada yang kurang sesuai. Saya tidak membuat migrations dan seeders karena di typescript kurang banyak referensi dan banyak error untuk sequelize menggunakan sequelize-cli, jadi tidak saya buat. Tetapi sebenarnya saya sudah memahami fungsi dan manfaat kedua hal tersebut, mungkin akan saya buat di submission selanjutnya.
-
-Ada beberapa kebingungan yang saya alami dalam hal createdBy, deletedBy, dan updatedBy pada model Car. Sebenarnya saya mau implementasi soft delete tapi sepertinya tidak memungkinkan karena saya agak sibuk.
+Saya mau membiasakan memakai typescript jadi mohon maaf jika ada yang kurang sesuai. Saya tidak membuat migrations dan seeders karena di typescript kurang banyak referensi dan banyak error untuk sequelize menggunakan sequelize-cli, jadi tidak saya buat. Tetapi sebenarnya saya sudah memahami fungsi dan manfaat kedua hal tersebut, tapi pasti saya akan buat di project nanti menggunakan js biasa.
 
 ## Users
 

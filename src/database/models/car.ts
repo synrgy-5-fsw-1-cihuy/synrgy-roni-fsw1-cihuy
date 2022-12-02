@@ -8,9 +8,10 @@ class Car extends Model {
   cost!: number;
   capacity!: string;
   image!: string;
-  created_by!: number;
-  deleted_by!: number;
-  updated_by!: number;
+  available!: boolean;
+  createdBy!: number;
+  deletedBy!: number;
+  updatedBy!: number;
   /**
    * Helper method for defining associations.
    * This method is not a part of Sequelize lifecycle.
@@ -36,15 +37,20 @@ Car.init(
       type: DataTypes.STRING(128),
       allowNull: false,
     },
-    created_by: {
+    available: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
+    createdBy: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    deleted_by: {
+    deletedBy: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    updated_by: {
+    updatedBy: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
@@ -53,6 +59,7 @@ Car.init(
     tableName: "cars",
     modelName: "Car",
     sequelize,
+    paranoid: true,
   }
 );
 

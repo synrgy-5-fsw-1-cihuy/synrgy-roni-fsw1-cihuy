@@ -48,11 +48,10 @@ const updateCar = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     const data = req.body;
-    const result = await CarService.updateCar(data, id, (req as RequestWithUser).user.id);
+    await CarService.updateCar(data, id, (req as RequestWithUser).user.id);
     res.status(200).json({
       status: 200,
       message: "Success",
-      data: result,
     });
   } catch (error) {
     next(error);
@@ -62,11 +61,10 @@ const updateCar = async (req: Request, res: Response, next: NextFunction) => {
 const deleteCar = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const result = await CarService.deleteCar(id);
+    await CarService.deleteCar(id, (req as RequestWithUser).user.id);
     res.status(200).json({
       status: 200,
       message: "Success",
-      data: result,
     });
   } catch (error) {
     next(error);

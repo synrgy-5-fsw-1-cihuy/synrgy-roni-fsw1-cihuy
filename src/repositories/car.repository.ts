@@ -10,7 +10,13 @@ const createCar = async (data: ICar) => {
 };
 
 const getAllCar = async () => {
-  const result = await Car.findAll();
+  const result = await Car.findAll({
+    where: {
+      available: true,
+      deletedBy: null,
+      deletedAt: null,
+    },
+  });
   return result;
 };
 
@@ -25,6 +31,9 @@ const updateCar = async (data: ICar, id: string) => {
     {
       where: {
         id,
+        available: true,
+        deletedBy: null,
+        deletedAt: null,
       },
     }
   );
