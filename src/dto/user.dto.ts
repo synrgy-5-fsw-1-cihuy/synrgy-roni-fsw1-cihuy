@@ -204,7 +204,7 @@ export interface RequestWithUser extends Request {
  *          description: The message
  *      example:
  *        status: 200
- *        message: User successfully created
+ *        message: User successfully updated
  */
 
 /**

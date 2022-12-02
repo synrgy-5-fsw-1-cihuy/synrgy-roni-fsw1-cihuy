@@ -86,7 +86,7 @@ UserRouter.post("/login", validateSchema(userRegisterDTO), UserController.login)
  *           $ref: '#/components/schemas/UserRoleRequest'
  *      responses:
  *        200:
- *          description: The user was successfully logged in
+ *          description: The user was successfully updated
  *          content:
  *            application/json:
  *              schema:
