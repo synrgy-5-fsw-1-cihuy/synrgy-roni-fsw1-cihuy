@@ -21,7 +21,7 @@ Ada 4 hal tidak saya buat di submission ini, yaitu :
 - migrations
 - seeders
 
-Saya mau membiasakan memakai typescript jadi mohon maaf jika ada yang kurang sesuai. Saya tidak membuat migrations dan seeders karena di typescript kurang banyak referensi dan banyak error untuk sequelize menggunakan sequelize-cli, jadi tidak saya buat. Tetapi sebenarnya saya sudah memahami fungsi dan manfaat kedua hal tersebut, tapi pasti saya akan buat di project nanti menggunakan js biasa.
+Saya mau membiasakan memakai typescript jadi mohon maaf jika ada yang kurang sesuai. Saya tidak membuat migrations dan seeders karena di typescript kurang banyak referensi dan banyak error untuk sequelize menggunakan sequelize-cli, jadi tidak saya buat. Tetapi sebenarnya saya sudah memahami fungsi dan manfaat kedua hal tersebut, tapi pasti saya akan buat di project nanti menggunakan js biasa sesuai fungsi dan manfaatnya.
 
 ## Users
 
