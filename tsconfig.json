@@ -1,38 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "allowJs": true,
-    "module": "commonjs",
-    "lib": ["es6"],
-    "rootDirs": ["src", "dist"],
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "baseUrl": "./src",
-    "outDir": "./dist",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "paths": {
-      "@/*": ["./*"],
-      "@configs/*": ["./configs/*"],
-      "@constants/*": ["./constants/*"],
-      "@controllers/*": ["./controllers/*"],
-      "@database/*": ["./database/*"],
-      "@dto/*": ["./dto/*"],
-      "@middlewares/*": ["./middlewares/*"],
-      "@repositories/*": ["./repositories/*"],
-      "@routes/*": ["./routes/*"],
-      "@services/*": ["./services/*"],
-      "@utils/*": ["./utils/*"]
-    },
-    "incremental": true,
-    "plugins": [
-      { "transform": "typescript-transform-paths" },
-      { "transform": "typescript-transform-paths", "afterDeclarations": true }
-    ]
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist", "jest.config.ts"],
-  "ts-node": {
-    "transpileOnly": true,
-    "require": ["typescript-transform-paths/register"]
-  }
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
