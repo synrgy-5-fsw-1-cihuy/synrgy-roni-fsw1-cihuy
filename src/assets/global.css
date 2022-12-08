@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-custom {
+    @apply container px-4 mx-auto md:w-4/5 lg:w-3/5;
+  }
+}
