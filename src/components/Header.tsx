@@ -18,10 +18,11 @@ const Header: FC = () => {
           <ul className="items-center justify-between hidden space-x-2 text-xs md:flex md:space-x-2 md:text-sm xl:space-x-3 xl:text-base">
             {navigation.map((item, index) => (
               <li key={index + item.name}>
-                <Link to={item.href}>
-                  <a className="p-1 transition-all rounded hover:bg-gray-200 sm:px-3 sm:py-2 md:inline-block">
-                    {item.name}
-                  </a>
+                <Link
+                  to={item.href}
+                  className="p-1 transition-all rounded hover:bg-gray-200 sm:px-3 sm:py-2 md:inline-block"
+                >
+                  {item.name}
                 </Link>
               </li>
             ))}
