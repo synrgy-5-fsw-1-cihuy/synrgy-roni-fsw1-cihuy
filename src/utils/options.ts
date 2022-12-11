@@ -23,7 +23,7 @@ const timeOptions: ITime[] = [];
 
 for (let i = 0; i < 24; i++) {
   const time = {
-    text: i.toString().length === 1 ? `0${i}:00 WIB` : `${i}:00 WIB`,
+    text: i.toString().length === 1 ? `0${i}:00` : `${i}:00`,
     value: i.toString().length === 1 ? `0${i}:00` : `${i}:00`,
   };
   timeOptions.push(time);

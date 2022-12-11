@@ -41,11 +41,12 @@ const combineTime = (date: string, time: string) => {
 };
 
 const filterCar = (
-  { driverType, date, time, passenger = 1 }: IFilter,
+  { driverType, date, time = "00:00", passenger = 1 }: IFilter,
   cars: ICar[]
 ): Promise<ICar[]> => {
-  let dateTime = 0;
-  if (date && time) dateTime = combineTime(date, time);
+  const dateTime =
+    date && time ? combineTime(date, time) : date ? Date.parse(date) / 1000 : 0;
+
   return new Promise(function (resolve, reject) {
     const result = cars.filter(
       (car) =>
