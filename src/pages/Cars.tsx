@@ -46,7 +46,8 @@ const CarsPage: FC = () => {
       setFilteredCars(result);
       setIsLoading(false);
     } catch (e) {
-      setIsLoading(true);
+      setFilteredCars([]);
+      setIsLoading(false);
     }
   };
 
