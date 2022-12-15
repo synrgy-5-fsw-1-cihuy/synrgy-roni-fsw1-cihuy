@@ -24,9 +24,9 @@ interface IFilter {
   passenger?: number;
 }
 
-const getUnix = (unix: Date) => new Date(unix).getTime() / 1000;
+export const getUnix = (unix: Date) => new Date(unix).getTime() / 1000;
 
-const combineTime = (date: string, time: string) => {
+export const combineTime = (date: string, time: string) => {
   const [year, month, day] = date.split("-");
   const [hour, minute] = time.split(":");
   return (

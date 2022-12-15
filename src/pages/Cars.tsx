@@ -1,62 +1,63 @@
-import { FormEvent, MutableRefObject, useEffect, useState } from "react";
-import { useRef } from "react";
+import { AxiosResponse } from "axios";
+import { FormEvent, MutableRefObject, useEffect, useRef } from "react";
 import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import CarCard from "../components/cards/CarCard";
 import CarCardSkeleton from "../components/skeletons/CarCardSkeleton";
 import Hero from "../parts/Hero";
 import { getAllCar } from "../services/car.service";
-import { filterCar } from "../utils/filter";
+import { RootState } from "../store";
+import {
+  getFilteredCars,
+  setAllCar,
+  setCarLoading,
+  setFilterByCapacity,
+  setFilterByDate,
+  setFilterByDriverType,
+  setFilterByTime,
+} from "../store/reducers/car";
 import { ICar } from "../utils/filter";
 import { driverTypeOptions, timeOptions } from "../utils/options";
 
 const CarsPage: FC = () => {
+  const dispatch = useDispatch();
+
   const driverTypeE = useRef() as MutableRefObject<HTMLSelectElement>;
   const dateE = useRef() as MutableRefObject<HTMLInputElement>;
   const timeE = useRef() as MutableRefObject<HTMLSelectElement>;
   const passengerE = useRef() as MutableRefObject<HTMLInputElement>;
 
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [cars, setCars] = useState<ICar[]>([]);
-  const [filteredCars, setFilteredCars] = useState<ICar[]>([]);
+  const { isLoading } = useSelector((state: RootState) => state.car);
+  const cars: ICar[] = useSelector(getFilteredCars);
 
   useEffect(() => {
     if (cars.length < 1) {
-      getAllCar().then((res) => {
-        setCars(res.data);
-        setFilteredCars(res.data);
-        setIsLoading(false);
-      });
+      getAllCar()
+        .then((res: AxiosResponse) => {
+          dispatch(setAllCar(res.data));
+        })
+        .catch(() => dispatch(setCarLoading(false)));
     }
-  }, [cars, filteredCars]);
+  }, []);
 
   const handleFilter = async (e: FormEvent<Element>) => {
     e.preventDefault();
-    setIsLoading(true);
-    const driverType = Number(driverTypeE?.current?.value);
-    const date = dateE?.current?.value;
-    const time = timeE?.current?.value;
-    const passenger = passengerE?.current?.value as unknown as number;
-
-    try {
-      const result: ICar[] = await filterCar(
-        { driverType, date, time, passenger },
-        cars
-      );
-      setFilteredCars(result);
-      setIsLoading(false);
-    } catch (e) {
-      setFilteredCars([]);
-      setIsLoading(false);
-    }
+    dispatch(setFilterByDriverType(Number(driverTypeE?.current?.value)));
+    dispatch(setFilterByDate(dateE?.current?.value));
+    dispatch(setFilterByTime(timeE?.current?.value));
+    dispatch(setFilterByCapacity(Number(passengerE?.current?.value)));
   };
 
   const handleReset = () => {
-    setFilteredCars(cars);
     driverTypeE.current.value = "";
     dateE.current.value = "";
     timeE.current.value = "";
     passengerE.current.value = "";
+    dispatch(setFilterByDriverType(null));
+    dispatch(setFilterByDate(""));
+    dispatch(setFilterByTime(""));
+    dispatch(setFilterByCapacity(0));
   };
 
   return (
@@ -164,12 +165,12 @@ const CarsPage: FC = () => {
                   <CarCardSkeleton key={`skeleton${i}`} />
                 ))}
               </div>
-            ) : cars.length > 0 && filteredCars.length > 0 ? (
+            ) : cars.length > 0 ? (
               <div
                 id="cars-container"
                 className="row row-cols-lg-3 row-cols-1 g-3"
               >
-                {filteredCars.map((car) => (
+                {cars.map((car) => (
                   <CarCard key={car.id} data={car} />
                 ))}
               </div>
