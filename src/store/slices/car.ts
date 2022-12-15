@@ -39,7 +39,7 @@ const initialState: ICarRedux = {
   filter: {
     driverType: null,
     date: null,
-    time: null,
+    time: "00:00",
     capacity: 0,
   },
 };
@@ -56,23 +56,20 @@ const carSlice = createSlice({
       state.all = action.payload;
       state.isLoading = false;
     },
-    setFilterByDriverType: (state, action: PayloadAction<number | null>) => {
-      state.filter.driverType = action.payload;
-    },
-    setFilterByDate: (state, action: PayloadAction<string | null>) => {
-      state.filter.date = action.payload;
-    },
-    setFilterByTime: (state, action: PayloadAction<string | null>) => {
-      state.filter.time = action.payload;
-    },
-    setFilterByCapacity: (state, action: PayloadAction<number>) => {
-      state.filter.capacity = action.payload;
+    setFilter: (state, action: PayloadAction<ICarRedux["filter"]>) => {
+      state.isLoading = true;
+      state.filter = {
+        ...state.filter,
+        ...action.payload,
+        time: action.payload.time || "00:00",
+      };
+      state.isLoading = false;
     },
     resetFilter: (state) => {
       state.filter = {
         driverType: null,
         date: null,
-        time: null,
+        time: "00:00",
         capacity: 0,
       };
     },
@@ -81,7 +78,10 @@ const carSlice = createSlice({
 
 export const getFilteredCars = createSelector(
   (state: RootState) => state.car,
-  ({ all, filter: { driverType, date, time, capacity } }): ICar[] => {
+  ({
+    all,
+    filter: { driverType, date, time = "00:00", capacity = 1 },
+  }): ICar[] => {
     const dateTime =
       date && time
         ? combineTime(date, time)
@@ -98,14 +98,7 @@ export const getFilteredCars = createSelector(
   }
 );
 
-export const {
-  setCarLoading,
-  setAllCar,
-  setFilterByDriverType,
-  setFilterByDate,
-  setFilterByTime,
-  setFilterByCapacity,
-  resetFilter,
-} = carSlice.actions;
+export const { setCarLoading, setAllCar, setFilter, resetFilter } =
+  carSlice.actions;
 
 export default carSlice.reducer;

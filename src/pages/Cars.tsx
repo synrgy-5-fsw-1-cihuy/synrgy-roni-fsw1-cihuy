@@ -13,11 +13,8 @@ import {
   resetFilter,
   setAllCar,
   setCarLoading,
-  setFilterByCapacity,
-  setFilterByDate,
-  setFilterByDriverType,
-  setFilterByTime,
-} from "../store/reducers/car";
+  setFilter,
+} from "../store/slices/car";
 import { ICar } from "../utils/filter";
 import { driverTypeOptions, timeOptions } from "../utils/options";
 
@@ -44,10 +41,14 @@ const CarsPage: FC = () => {
 
   const handleFilter = async (e: FormEvent<Element>) => {
     e.preventDefault();
-    dispatch(setFilterByDriverType(Number(driverTypeE?.current?.value)));
-    dispatch(setFilterByDate(dateE?.current?.value));
-    dispatch(setFilterByTime(timeE?.current?.value));
-    dispatch(setFilterByCapacity(Number(passengerE?.current?.value)));
+    dispatch(
+      setFilter({
+        driverType: Number(driverTypeE?.current?.value),
+        date: dateE?.current?.value,
+        time: timeE?.current?.value,
+        capacity: Number(passengerE?.current?.value),
+      })
+    );
   };
 
   const handleReset = () => {
