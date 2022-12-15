@@ -68,6 +68,14 @@ const carSlice = createSlice({
     setFilterByCapacity: (state, action: PayloadAction<number>) => {
       state.filter.capacity = action.payload;
     },
+    resetFilter: (state) => {
+      state.filter = {
+        driverType: null,
+        date: null,
+        time: null,
+        capacity: 0,
+      };
+    },
   },
 });
 
@@ -97,6 +105,7 @@ export const {
   setFilterByDate,
   setFilterByTime,
   setFilterByCapacity,
+  resetFilter,
 } = carSlice.actions;
 
 export default carSlice.reducer;

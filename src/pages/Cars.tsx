@@ -10,6 +10,7 @@ import { getAllCar } from "../services/car.service";
 import { RootState } from "../store";
 import {
   getFilteredCars,
+  resetFilter,
   setAllCar,
   setCarLoading,
   setFilterByCapacity,
@@ -54,10 +55,7 @@ const CarsPage: FC = () => {
     dateE.current.value = "";
     timeE.current.value = "";
     passengerE.current.value = "";
-    dispatch(setFilterByDriverType(null));
-    dispatch(setFilterByDate(""));
-    dispatch(setFilterByTime(""));
-    dispatch(setFilterByCapacity(0));
+    dispatch(resetFilter());
   };
 
   return (
