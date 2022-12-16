@@ -2,7 +2,13 @@
 
 Khoironi Kurnia Syah - Fullstack Web Development 1 (A) - Chapter 8
 
-No preview yet, susah dan pusing
+Deployed via Railway.app CLI
+
+- Preview [Open](https://binarc8.zekhoi.dev)
+
+## Documentation
+
+- [Swagger](https://binarc8.zekhoi.dev/documentation)
 
 ## How to run
 
