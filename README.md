@@ -15,4 +15,4 @@ This repository is a collection of my study notes for Fullstack Web Development 
 - [Challenge 5](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-5) => Backend (Basic Express.js, RESTful API)
 - [Challenge 6](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-6) => Backend (Express.js, RESTful API with JWT authentication, Swagger UI)
 - [Challenge 7](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-7) => Frontend (HTML to React, Redux, Bootstrap, Axios, search filter)
-- [Challenge 8](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-8) => Coming soon
+- [Challenge 8](https://github.com/synrgy-5-fsw-1-cihuy/synrgy-roni-fsw1-cihuy/tree/challenge-8) => Backend (Linter [ESLint], Testing [Jest, Supertest], Deployment [Railway.app])
