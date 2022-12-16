@@ -67,11 +67,19 @@ describe("Test API Auth Endpoint", () => {
           email: "fikri@binar.co.id",
         },
       });
-      const token = AuthC.createTokenFromUser(user, role);
+      const token = AuthC.createTokenFromUser(
+        {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          image: user.image,
+        },
+        role
+      );
       await request(app)
-        .post("/v1/auth/whoami")
+        .get("/v1/auth/whoami")
         .set("Authorization", `Bearer ${token}`)
-        .expect(404);
+        .expect(200);
     });
   });
 });

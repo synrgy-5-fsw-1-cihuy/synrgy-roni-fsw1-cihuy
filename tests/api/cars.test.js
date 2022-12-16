@@ -81,7 +81,7 @@ describe("Test API Cars Endpoint", () => {
       const car = await Car.create(mockCar);
       await request(app).delete(`/v1/cars/${car.id}`).expect(401);
     });
-    it("should respond with a 200 status code", async () => {
+    it("should respond with a 204 status code", async () => {
       const car = await Car.create(mockCar);
       await request(app)
         .delete(`/v1/cars/${car.id}`)
@@ -142,7 +142,7 @@ describe("Test API Cars Endpoint", () => {
         .set("Authorization", `Bearer ${mockAdmin}`)
         .expect(401);
     });
-    it("should respond with a 200 status code", async () => {
+    it("should respond with a 201 status code", async () => {
       const car = await Car.create(mockCar);
       await request(app)
         .post(`/v1/cars/${car.id}/rent`)
